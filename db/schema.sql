@@ -1,0 +1,5 @@
+-- DROP DATABASE
+DROP DATABASE IF EXISTS caregivers_db;
+
+-- CREATE DATABASE
+CREATE DATABASE caregivers_db;
