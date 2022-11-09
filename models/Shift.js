@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Blogpost extends Model {}
+class Shift extends Model {}
 
-Blogpost.init(
+Shift.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -23,21 +23,14 @@ Blogpost.init(
             allowNull: false,
             defaultValue: DataTypes.NOW,
         },
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: "user",
-                key: "id",
-            },
-        },
     },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: "blogpost",
+        modelName: "shift",
     }
 );
 
-module.exports = Blogpost;
+module.exports = Shift;
