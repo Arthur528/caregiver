@@ -10,8 +10,8 @@ class User extends Model {
 
 User.init(
   {
-    nurseId: {
-      type: DataTypes.INTEGER,
+    nurse_Id: {
+      type: DataTypes.STRING,
       allowNull: false,
       primaryKey: true,
       validate: {
