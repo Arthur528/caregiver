@@ -57,11 +57,14 @@ Hospital.init(
     modelName: 'hospital',
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 );
 
 =======
 
 
+=======
+>>>>>>> c42bdf5de77c000e6aeacf7932af3fecc94fbcf4
 );
 
 >>>>>>> f49078cdbfd315252b2c999c5539783c1377d23a
