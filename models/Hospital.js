@@ -5,6 +5,7 @@ class Hospital extends Model {}
 
 Hospital.init(
   {
+<<<<<<< HEAD
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -32,6 +33,22 @@ Hospital.init(
       defaultValue: DataTypes.NOW,
     },
   },
+=======
+    hospital_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        street_address: {
+          type: DataTypes.STRING,
+        },
+        city: {
+          type: DataTypes.STRING,
+        },
+        zip_code: {
+          type: DataTypes.STRING,
+        },
+  },
+},
+>>>>>>> f49078cdbfd315252b2c999c5539783c1377d23a
   {
     sequelize,
     timestamps: false,
@@ -39,6 +56,13 @@ Hospital.init(
     underscored: true,
     modelName: 'hospital',
   }
+<<<<<<< HEAD
 );
 
+=======
+
+
+);
+
+>>>>>>> f49078cdbfd315252b2c999c5539783c1377d23a
 module.exports = Hospital;

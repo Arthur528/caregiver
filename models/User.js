@@ -10,7 +10,7 @@ class User extends Model {
 
 User.init(
   {
-    NurseId: {
+    nurseId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
@@ -41,7 +41,7 @@ User.init(
       type: DataTypes.INTEGER,
     },
     bio: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     referral: {
       type: DataTypes.STRING,
@@ -63,6 +63,9 @@ User.init(
       type: DataTypes.STRING,
     },
     license_plate: {
+      type: DataTypes.STRING,
+    },
+    car_make: {
       type: DataTypes.STRING,
     },
     car_model: {
