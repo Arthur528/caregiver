@@ -8,9 +8,11 @@ class User extends Model {
   }
 }
 
+// TODO: talk about car_make.
+// TODO: talk about how the model links to the seed data and the other models.
 User.init(
   {
-    nurse_Id: {
+    nurse_id: {
       type: DataTypes.STRING,
       allowNull: false,
       primaryKey: true,
@@ -38,7 +40,7 @@ User.init(
       },
     },
     phone_number: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     bio: {
       type: DataTypes.TEXT,
@@ -60,7 +62,7 @@ User.init(
       type: DataTypes.STRING,
     },
     zip_code: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
     },
     license_plate: {
       type: DataTypes.STRING,
