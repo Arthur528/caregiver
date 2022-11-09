@@ -26,8 +26,6 @@ Hospital.init(
     underscored: true,
     modelName: 'hospital',
   }
-
-
 );
 
 module.exports = Hospital;
