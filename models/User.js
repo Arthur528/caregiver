@@ -43,7 +43,7 @@ User.init(
       type: DataTypes.STRING,
     },
     bio: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     referral: {
       type: DataTypes.STRING,
