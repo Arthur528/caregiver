@@ -1,1 +1,28 @@
-<h1>This is the sign up page</h1>
+<div class="form">
+  <div class="form-heading">Sign-up</div>
+  <form action="" id="signup">
+
+    <label for="signupNurseId"><span>Nurse ID<span class="required"> *</span></span><input type="text" class="input-field" name="signupNurseId" id="signupNurseId" placeholder="RN00000000"/></label>
+
+    <label for="signupName"><span>Name<span class="required"> *</span></span><input type="text" class="input-field" name="signupName" id="signupName" placeholder="John/Jane Doe"/></label>
+
+    <label for="signupEmail"><span>E-mail<span class="required"> *</span></span><input type="text" class="input-field" name="signupEmail" id="signupEmail" placeholder="you@place.com"/></label>
+
+    <label for="signupPassword"><span>Password<span class="required"> *</span></span><input type="password" class="input-field" name="signupPassword" id="signupPassword" placeholder="supersecretpassword"/></label>
+
+    <label for="signupPhoneNumber"><span>Phone Number<span class="required"> *</span></span><input type="text" class="input-field" name="signupPhoneNumber" id="signupPhoneNumber" placeholder="111-222-3333"/></label>
+
+    <label for="signupBio"><span>Biography</span><textarea class="input-field" name="signupBio" id="signupBio" placeholder="Now this is a story all about how..."></textarea></label>
+
+    <label for="signupReferral"><span>Referral</span><select name="signupReferral" class="select-field" id="signupReferral">
+      <option value="friend">Friend</option>
+      <option value="web">Website</option>
+      <option value="other">Other</option>
+    </select></label>
+
+    <label><span> </span><input type="submit" value="Sign-up"/></label>
+    <p><a href="/login">Need to login?</a></p>
+  </form>
+</div>
+
+<script src="/js/signup.js"></script>

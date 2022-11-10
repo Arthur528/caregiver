@@ -15,7 +15,7 @@ const seedDatabase = async () => {
   const hospitals = await Hospital.bulkCreate(hospitalData);
   const shift = await Shift.bulkCreate(shiftData);
 
-   const usershift = await UserShift.bulkCreate([
+  const usershift = await UserShift.bulkCreate([
     {
       day_of_week: 'Monday',
       UserId: 1,
