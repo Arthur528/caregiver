@@ -5,23 +5,16 @@ class Shift extends Model {}
 
 Shift.init(
     {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
+        shift_hours: {
+            type: DataTypes.STRING,
             primaryKey: true,
-            autoIncrement: true,
         },
-        name: {
+        day_of_week: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
-        description: {
+        hospital_location: {
             type: DataTypes.STRING,
-        },
-        date_created: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            defaultValue: DataTypes.NOW,
         },
     },
     {
