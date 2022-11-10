@@ -1,8 +1,7 @@
 const Hospital = require('./Hospital');
 const Shift = require('./shift');
 const User = require('./user');
-Hospital = require('./hospital');
-User = require("./user");
+
 
 User.belongsToMany(Hospital, {
     through: "UserHospital",

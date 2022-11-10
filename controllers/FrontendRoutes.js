@@ -34,11 +34,9 @@ router.get('/signup',(req,res)=>{
 });
 
 
-router.get("*" , (req,res)=>{
-    res.render("404")
-});
-
-
+// router.get("*" , (req,res)=>{
+//     res.render("404")
+// });
 
 
 
