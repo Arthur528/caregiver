@@ -34,6 +34,12 @@ router.get('/sign-up',(req,res)=>{
 });
 
 
+router.get("/logout",(req,res)=>{
+    req.session.destroy();
+    res.redirect("/")
+});
+
+
 
 
 

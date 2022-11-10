@@ -1,5 +1,6 @@
 const express = require('express');
 const router =express.Router();
+const {User, Hospital} = require('../models');
 
 
 
@@ -18,17 +19,17 @@ router.get("/profile", (req,res) =>{
     res.json("profile")
 });
 
-router.post("/",(req,res)=>{
+router.post("/sign-up",(req,res)=>{
     User.create({
         nurse_id:req.body.nurse_id,
         name:req.body.name,
         email:req.body.email,
         password:req.body.password,
+        phone_number:req.body.phone_number,
         bio:req.body.bio,
         referral:req.body.referral,
         is_driving:req.body.is_driving,
         shift_info:req.body.shift_info,
-        phone_number:req.body.phone_number,
         street_address:req.body.street_address,
         city:req.body.city,
         zip_code:req.body.zip_code,
@@ -36,6 +37,9 @@ router.post("/",(req,res)=>{
         car_make:req.body.car_make,
         car_model:req.body.car_model,
         car_color:req.body.car_color,
+        HospitalId:req.body.HospitalId,
+        ShiftId:req.body.ShiftId,
+
     }).then(newUser=>{  
         req.session.userId=newUser.id;
         req.session.loggedIn=true;
@@ -91,8 +95,5 @@ router.post('/login' , async (req, res) => {
           }
         });
 
-router.get("/logout",(req,res)=>{
-    req.session.destroy();
-    res.redirect("/")
-})
+
 module.exports = router;
