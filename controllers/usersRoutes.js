@@ -1,25 +1,23 @@
 const express = require('express');
 const router =express.Router();
-const {User, Hospital} = require('../models');
+const {User} = require('../models');
+const bcrypt = require("bcrypt");
 
 
 
 
 
-router.get("/sessions", (req,res) =>{ 
-    res.json(req.session)
-})
 
  
-router.get("/profile", (req,res) =>{
-    if(!req.session.logged_id){
-        return res.redirect("/home")
-    }
-    User.findByPk(req.session.user_id)
-    res.json("profile")
-});
+// router.get("/profile", (req,res) =>{
+//     if(!req.session.logged_id){
+//         return res.redirect("home")
+//     }
+//     User.findByPk(req.session.user_id)
+//     res.json("profile")
+// });
 
-router.post("/sign-up",(req,res)=>{
+router.post("/signup",(req,res)=>{
     User.create({
         nurse_id:req.body.nurse_id,
         name:req.body.name,
@@ -41,8 +39,8 @@ router.post("/sign-up",(req,res)=>{
         ShiftId:req.body.ShiftId,
 
     }).then(newUser=>{  
-        req.session.userId=newUser.id;
-        req.session.loggedIn=true;
+        req.session.nurse_id=newUser.id;
+        req.session.logged_in=true;
         res.json(newUser)
     
      }).catch(err=>{
@@ -53,50 +51,39 @@ router.post("/sign-up",(req,res)=>{
 })
     
 
-// router.get('/', async (req, res) => {
-//     try {
-//       const users = await Users.findAll();
-//         res.status(200).json(users);
-//     } catch (err){
-//       console.log(err)
-//     }
-//   });
 
 
 router.get("/logout",(req,res)=>{
     req.session.destroy();
-    res.redirect("/")
+    res.json({msg:"successfully logged out!"})
 });
 
 
 
-router.post('/login' , async (req, res) => { 
-    try {
-        const loginData = await Users.findByPk({ where: { username :req.body.username}});
-        if (!loginData) {
-            res
-            .status(400)
-            .json({ message: "Incorrect username or password"})
-            return;
+router.post('/login' , (req, res) => {
+    User.findOne({
+        where:{
+            email:req.body.email 
         }
-        const passwordCheck = await loginData.checkPassword(req.body.password);
-        if (!loginData) {
-            res
-                .status(400)
-                .json({ message: "Incorrect username or password"})
-                return;
+    }).then(foundUser => {
+        if(!foundUser){
+            return res.status(401).json({msg:"Your email or password is incorrect!"})
+        }else if(!bcrypt.compareSync(req.body.password, foundUser.password)){
+            res.status(401).json({msg:"Your email or password is incorrect!" })
+        } else {
+            req.session.nurse_id=foundUser.id;
+            req.session.logged_in=true;
+            res.json(foundUser);
         }
+    
+    }).catch(err => {
+        console.log(err)
+        res.status(500).json({err})
+    })
 
-        req.session.save(() => {
-            req.session.nurse_id = loginData.nurse_id;
-            req.session.logged_in = true;
-            
-            res.json({user : loginData, message: "log in succesful"});
-        });
-        } catch (err) {
-            res.status(400).json(err);
-          }
-        });
+
+});
+
 
        
 
