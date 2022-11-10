@@ -2,14 +2,9 @@ const express = require('express');
 const router =express.Router();
 
 
-router.get('/', async (req, res) => {
-    res.render("home")
-});
 
-router.get('/sign-up', async (req, res) => {
-    res.render("Sign-up")
-});
- 
+
+
 router.get("/sessions", (req,res) =>{ 
     res.json(req.session)
 })
@@ -23,6 +18,36 @@ router.get("/profile", (req,res) =>{
     res.json("profile")
 });
 
+router.post("/",(req,res)=>{
+    User.create({
+        nurse_id:req.body.nurse_id,
+        name:req.body.name,
+        email:req.body.email,
+        password:req.body.password,
+        bio:req.body.bio,
+        referral:req.body.referral,
+        is_driving:req.body.is_driving,
+        shift_info:req.body.shift_info,
+        phone_number:req.body.phone_number,
+        street_address:req.body.street_address,
+        city:req.body.city,
+        zip_code:req.body.zip_code,
+        license_plate:req.body.license_plate,
+        car_make:req.body.car_make,
+        car_model:req.body.car_model,
+        car_color:req.body.car_color,
+    }).then(newUser=>{  
+        req.session.userId=newUser.id;
+        req.session.loggedIn=true;
+        res.json(newUser)
+    
+     }).catch(err=>{
+        console.log(err)
+        res.status(500).json({
+        })
+ })
+})
+    
 
 // router.get('/', async (req, res) => {
 //     try {
@@ -36,9 +61,6 @@ router.get("/profile", (req,res) =>{
 
 
 
-router.get('/sign-up', async (req, res) => {
-    res.render("Sign-up")
-});
 
 
 router.post('/login' , async (req, res) => { 
@@ -69,4 +91,8 @@ router.post('/login' , async (req, res) => {
           }
         });
 
+router.get("/logout",(req,res)=>{
+    req.session.destroy();
+    res.redirect("/")
+})
 module.exports = router;
