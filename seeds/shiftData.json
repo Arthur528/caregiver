@@ -1,0 +1,19 @@
+ [
+  {
+    "work_shift": "7:00am - 7:30pm", 
+    "schedule_duration": "1"
+  },
+  {
+    "work_shift": "7:00pm - 7:30am", 
+    "schedule_duration": "2"
+  },
+  {
+    "work_shift": "9:00am - 5:30pm", 
+    "schedule_duration": "3"
+  },
+  {
+    "work_shift": "Flex Option", 
+    "schedule_duration": "4"
+  }
+]
+

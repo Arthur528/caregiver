@@ -8,14 +8,13 @@ class User extends Model {
   }
 }
 
-// TODO: talk about car_make.
+
 // TODO: talk about how the model links to the seed data and the other models.
 User.init(
   {
     nurse_id: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true,
       validate: {
         len: [10],
       },
@@ -67,6 +66,7 @@ User.init(
     license_plate: {
       type: DataTypes.STRING,
     },
+    // talk about car_make.
     car_make: {
       type: DataTypes.STRING,
     },
@@ -89,10 +89,7 @@ User.init(
       },
     },
     sequelize,
-    timestamps: false,
-    freezeTableName: true,
     underscored: true,
-    modelName: 'user',
   }
 );
 

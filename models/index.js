@@ -1,7 +1,7 @@
-const Hospital = require('./Hospital');
-const Shift = require('./shift');
-const User = require('./user');
-
+const Hospital = require('./Hospital.js');
+const Shift = require('./Shift.js');
+const User = require('./User.js');
+const UserShift = require('./UserShift.js');
 
 User.belongsToMany(Hospital, {
     through: "UserHospital",
@@ -12,11 +12,11 @@ Hospital.belongsToMany(User, {
 })
 
 User.belongsToMany(Shift, {
-    through: "UserShift",
+    through: UserShift,
 })
 
 Shift.belongsToMany(User, {
-    through: "UserShift",
+    through: UserShift,
 })
 
 Hospital.belongsToMany(Shift, {
@@ -27,4 +27,4 @@ Shift.belongsToMany(Hospital, {
     through: "HospitalShift",
 })
 
-module.exports = { User, Shift, Hospital };
+module.exports = { User, Shift, Hospital, UserShift };
