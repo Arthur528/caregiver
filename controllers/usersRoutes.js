@@ -1,6 +1,6 @@
 const express = require('express');
 const router =express.Router();
-const {User, Hospital} = require('../models');
+const {User} = require('../models');
 const bcrypt = require("bcrypt");
 
 
@@ -9,13 +9,13 @@ const bcrypt = require("bcrypt");
 
 
  
-router.get("/profile", (req,res) =>{
-    if(!req.session.logged_id){
-        return res.redirect("home")
-    }
-    User.findByPk(req.session.user_id)
-    res.json("profile")
-});
+// router.get("/profile", (req,res) =>{
+//     if(!req.session.logged_id){
+//         return res.redirect("home")
+//     }
+//     User.findByPk(req.session.user_id)
+//     res.json("profile")
+// });
 
 router.post("/signup",(req,res)=>{
     User.create({
@@ -39,7 +39,7 @@ router.post("/signup",(req,res)=>{
         ShiftId:req.body.ShiftId,
 
     }).then(newUser=>{  
-        req.session.nurse_id=newUser.name;
+        req.session.nurse_id=newUser.id;
         req.session.logged_in=true;
         res.json(newUser)
     
@@ -51,19 +51,10 @@ router.post("/signup",(req,res)=>{
 })
     
 
-// router.get('/', async (req, res) => {
-//     try {
-//       const users = await Users.findAll();
-//         res.status(200).json(users);
-//     } catch (err){
-//       console.log(err)
-//     }
-//   });
 
 
 router.get("/logout",(req,res)=>{
     req.session.destroy();
-    // res.redirect("/")
     res.json({msg:"successfully logged out!"})
 });
 
@@ -80,7 +71,7 @@ router.post('/login' , (req, res) => {
         }else if(!bcrypt.compareSync(req.body.password, foundUser.password)){
             res.status(401).json({msg:"Your email or password is incorrect!" })
         } else {
-            req.session.nurse_id=foundUser.name;
+            req.session.nurse_id=foundUser.id;
             req.session.logged_in=true;
             res.json(foundUser);
         }
