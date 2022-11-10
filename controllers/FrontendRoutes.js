@@ -5,39 +5,40 @@ const router =express.Router();
 
 router.get('/', async (req, res) => {
     res.render("home"),{
-        loggedIn:req.session.loggedIn,
-        nurse_id:req.session.loggedIn
+        logged_in:req.session.logged_id,
+        nurse_id:req.session.nurse_id,
     }
 });
 
 
 router.get('/login',(req,res)=>{
-    if(req.session.loggedIn){
-        return res.redirect(`/user/${req.session.nurse_id}`)
+    if(req.session.logged_id){
+        return res.redirect("/")
     }
     res.render("login",{
-        loggedIn:false,
+        logged_in:false,
         nurse_id:null
     })
 });
 
 
 
-router.get('/sign-up',(req,res)=>{
-    if(req.session.loggedIn){
-        return res.redirect(`/user/${req.session.nurse_id}`)
+router.get('/signup',(req,res)=>{
+    if(req.session.logged_in){
+        return res.redirect("/")
     }
-    res.render("Sign-up",{
-        loggedIn:false,
+    res.render("signup",{
+        logged_in:false,
         nurse_id:null
     })
 });
 
 
-router.get("/logout",(req,res)=>{
-    req.session.destroy();
-    res.redirect("/")
+router.get("*" , (req,res)=>{
+    res.render("404")
 });
+
+
 
 
 
