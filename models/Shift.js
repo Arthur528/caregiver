@@ -5,24 +5,18 @@ class Shift extends Model {}
 
 Shift.init(
     {
-        shift_hours: {
+        work_shift: {
             type: DataTypes.STRING,
-            primaryKey: true,
+            allowNull: false,
         },
-        day_of_week: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-        hospital_location: {
-            type: DataTypes.STRING,
+        schedule_duration: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
         },
     },
     {
         sequelize,
-        timestamps: false,
-        freezeTableName: true,
         underscored: true,
-        modelName: "shift",
     }
 );
 

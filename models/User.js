@@ -15,7 +15,6 @@ User.init(
     nurse_id: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true,
       validate: {
         len: [10],
       },
@@ -90,10 +89,7 @@ User.init(
       },
     },
     sequelize,
-    timestamps: false,
-    freezeTableName: true,
     underscored: true,
-    modelName: 'user',
   }
 );
 
