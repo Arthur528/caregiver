@@ -63,7 +63,10 @@ router.post("/sign-up",(req,res)=>{
 //   });
 
 
-
+router.get("/logout",(req,res)=>{
+    req.session.destroy();
+    res.redirect("/")
+});
 
 
 
@@ -85,7 +88,7 @@ router.post('/login' , async (req, res) => {
         }
 
         req.session.save(() => {
-            req.session.user_id = loginData.id;
+            req.session.nurse_id = loginData.nurse_id;
             req.session.logged_in = true;
             
             res.json({user : loginData, message: "log in succesful"});
@@ -95,5 +98,6 @@ router.post('/login' , async (req, res) => {
           }
         });
 
+       
 
 module.exports = router;
