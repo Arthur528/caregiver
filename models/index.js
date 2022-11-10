@@ -1,25 +1,31 @@
-// const Blogpost = require('./blogpost');
-// const User = require('./user');
-// Comment = require('./comment');
-// User = require("./user");
+const Hospital = require('./Hospital');
+const Shift = require('./shift');
+const User = require('./user');
+Hospital = require('./hospital');
+User = require("./user");
 
+User.belongsToMany(Hospital, {
+    through: "UserHospital",
+})
 
-// User.hasMany(Blogpost, {
-//   foreignKey: 'user_id',
-//   onDelete: 'CASCADE'
-// });
+Hospital.belongsToMany(User, {
+    through: "UserHospital",
+})
 
-// Blogpost.belongsTo(User, {
-//   foreignKey: 'user_id'
-// });
+User.belongsToMany(Shift, {
+    through: "UserShift",
+})
 
-// User.hasMany(Comment, {
-//   foreignKey: "user_id",
-//   onDelete: "CASCADE",
-// });
+Shift.belongsToMany(User, {
+    through: "UserShift",
+})
 
-// Comment.belongsTo(User, {
-//   foreignKey: "user_id",
-// });
+Hospital.belongsToMany(Shift, {
+    through: "HospitalShift",
+})
 
-// module.exports = { User, Project };
+Shift.belongsToMany(Hospital, {
+    through: "HospitalShift",
+})
+
+module.exports = { User, Shift, Hospital };

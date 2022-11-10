@@ -4,7 +4,9 @@
   "description": "This is an application to help traveling healthcare professionals connect with other healthcare professionals and set up ride sharing as well as developing relations with said coworkers at the same work locations.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "seed": "node seeds/seed.js"
   },
   "repository": {
     "type": "git",
