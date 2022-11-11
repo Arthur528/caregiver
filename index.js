@@ -16,7 +16,7 @@ const { User, Shift, Hospital } = require("./models");
 const sess = {
   secret: process.env.SESSION_SECRET,
   cookie: {
-    maxAge:1000*60*60*2,
+    maxAge:1000*60*60*2
   },
   resave: false,
   saveUninitialized: true,
