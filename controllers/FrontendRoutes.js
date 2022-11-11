@@ -63,9 +63,9 @@ router.get("/hospitals", (req, res) => {
 });
 
 // 404 catch all route - if the user goes to an undefined endpoint, they are served a 404.
-router.get("*" , (req,res)=>{
-    res.render("404")
-});
+// router.get("*" , (req,res)=>{
+//     res.render("404")
+// });
 
 //profile route
 router.get('/user/:id',(req,res)=>{

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const usersRoutes = require("./usersRoutes")
-const FrontendRoutes = require("./FrontendRoutes")
+const FrontendRoutes = require("./frontendRoutes")
 router.use("/api/users", usersRoutes)
 //added 
 //const profileRoute = require("./profileRoute")
