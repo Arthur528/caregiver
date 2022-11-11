@@ -1,23 +1,19 @@
 const express = require('express');
 const router =express.Router();
-const {User} = require('../models');
+const {User, Shift, Hospital, UserShift} = require('../models');
 const bcrypt = require("bcrypt");
 
+router.get("/", (req,res) =>{
+    User.findAll({
+    }).then(users=>{
+        res.json(users)
+    }).catch(err=> {
+        console.log(err)
+        res.status(500).json({err})
+    })
+})
 
-
-
-
-
- 
-// router.get("/profile", (req,res) =>{
-//     if(!req.session.logged_id){
-//         return res.redirect("home")
-//     }
-//     User.findByPk(req.session.user_id)
-//     res.json("profile")
-// });
-
-router.post("/signup",(req,res)=>{
+router.post("/",(req,res)=>{
     User.create({
         nurse_id:req.body.nurse_id,
         name:req.body.name,
@@ -48,19 +44,14 @@ router.post("/signup",(req,res)=>{
         res.status(500).json({
         })
  })
-})
-    
-
-
+});
 
 router.get("/logout",(req,res)=>{
     req.session.destroy();
     res.json({msg:"successfully logged out!"})
 });
 
-
-
-router.post('/login' , (req, res) => {
+router.post('/login',(req, res) => {
     User.findOne({
         where:{
             email:req.body.email 
@@ -69,7 +60,7 @@ router.post('/login' , (req, res) => {
         if(!foundUser){
             return res.status(401).json({msg:"Your email or password is incorrect!"})
         }else if(!bcrypt.compareSync(req.body.password, foundUser.password)){
-            res.status(401).json({msg:"Your email or password is incorrect!" })
+           return res.status(401).json({msg:"Your email or password is incorrect!" })
         } else {
             req.session.nurse_id=foundUser.id;
             req.session.logged_in=true;

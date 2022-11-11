@@ -1,7 +1,6 @@
 const express = require('express');
+const { User } = require('../models');
 const router =express.Router();
-
-
 
 router.get('/', async (req, res) => {
     res.render("home"),{
@@ -9,7 +8,6 @@ router.get('/', async (req, res) => {
         nurse_id:req.session.nurse_id,
     }
 });
-
 
 router.get('/login',(req,res)=>{
     if(req.session.logged_id){
@@ -21,8 +19,6 @@ router.get('/login',(req,res)=>{
     })
 });
 
-
-
 router.get('/signup',(req,res)=>{
     if(req.session.logged_in){
         return res.redirect("/")
@@ -33,15 +29,26 @@ router.get('/signup',(req,res)=>{
     })
 });
 
-
 // router.get("*" , (req,res)=>{
 //     res.render("404")
 // });
 
-
-
-
-
+//profile route
+router.get('/user/:id',(req,res)=>{
+    User.findByPk(req.params.id, {
+    }).then(foundUser=> {
+        const hbsUser = foundUser.toJSON();
+        console.log(hbsUser)
+        res.json(hbsUser)
+    })
+    if(req.session.logged_in){
+        return res.redirect("/")
+    }
+    res.render("profile",{
+        logged_in:false,
+        nurse_id:null
+    })
+});
 
 
 module.exports = router;
