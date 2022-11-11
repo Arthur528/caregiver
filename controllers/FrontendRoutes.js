@@ -1,4 +1,5 @@
 const express = require('express');
+const { User } = require('../models');
 const router =express.Router();
 
 // Home route - directs the user to a welcome page that allows them to login in.
@@ -14,7 +15,6 @@ router.get('/', async (req, res) => {
 // TODO: Edit profile page - if the user is logged in, they are able to edit their profile page.
 
 // TODO: View all nurses page - if the user is logged in, they are able to view all the other nurses (users).
-
 // Login route - if the user is not logged in, they are able to view the login page and login.
 router.get('/login',(req,res)=>{
     if(req.session.logged_id){
@@ -40,6 +40,23 @@ router.get('/signup',(req,res)=>{
 // 404 catch all route - if the user goes to an undefined endpoint, they are served a 404.
 router.get("*" , (req,res)=>{
     res.render("404")
+});
+
+//profile route
+router.get('/user/:id',(req,res)=>{
+    User.findByPk(req.params.id, {
+    }).then(foundUser=> {
+        const hbsUser = foundUser.toJSON();
+        console.log(hbsUser)
+        res.json(hbsUser)
+    })
+    if(req.session.logged_in){
+        return res.redirect("/")
+    }
+    res.render("profile",{
+        logged_in:false,
+        nurse_id:null
+    })
 });
 
 module.exports = router;
