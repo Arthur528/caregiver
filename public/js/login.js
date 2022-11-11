@@ -1,11 +1,11 @@
-const loginForm = document.querySelector("#loginForm");
+const loginForm = document.querySelector("#login");
 loginForm.addEventListener("submit",e=>{
     e.preventDefault();
     const userObj = {
         email:document.querySelector("#loginEmail").value,
         password:document.querySelector("#loginPassword").value
     }
-    fetch("/api/users/login",{
+    fetch("/login",{
         method:"POST",
         body:JSON.stringify(userObj),
         headers:{
@@ -19,7 +19,7 @@ loginForm.addEventListener("submit",e=>{
             alert("trumpet sound")
             location.reload();
         }
-    }).then(data=>{
-        location.href = `/user/${data.id}`
+    // }).then(data=>{
+    //     location.href = `/user/${data.id}`
     })
 })
