@@ -3,11 +3,6 @@ const router =express.Router();
 const {User} = require('../models');
 const bcrypt = require("bcrypt");
 
-
-
-
-
-
  
 // router.get("/profile", (req,res) =>{
 //     if(!req.session.logged_id){

@@ -20,6 +20,32 @@
       <option value="other">Other</option>
     </select></label>
 
+    <label for="signupStreetAddress"><span>Street Address</span><input type="text" class="input-field" name="signupStreetAddress" id="signupStreetAddress" placeholder="1234 Main St."/></label>
+
+    <label for="signupCity"><span>City</span><input type="text" class="input-field" name="signupCity" id="signupCity" placeholder="Gotham City"/></label>
+
+    <label for="signupZipCode"><span>Zip Code</span><input type="text" class="input-field" name="signupZipCode" id="signupZipCode" placeholder="90210"/></label>
+
+    {{!-- TODO: HospitalId --}}
+    <label for="signupHospital"><span>Hospital</span><select name="signupHospital" class="select-field" id="signupHospital">
+      <option value="friend">H1</option>
+      <option value="web">H2</option>
+      <option value="other">H3</option>
+    </select></label>
+
+    {{!-- TODO: shift-info -- NEEDS TO BECOME SHIFT RELATED INFO, TIED TO ShiftId --}}
+
+    {{!-- TODO: is_driving --}}
+    <label for="signupIsDriving"><span>Available to Drive</span><input type="checkbox" class="checkbox-field" name="signupIsDriving" id="signupIsDriving"></label>
+
+    {{!-- TODO: Only show whats below if is_driving is checked. --}}
+    {{!-- TODO: license_plate --}}
+    {{!-- TODO: car_make --}}
+    {{!-- TODO: car_model --}}
+    {{!-- TODO: car_color --}}
+    
+
+
     <label><span> </span><input type="submit" value="Sign-up"/></label>
     <p><a href="/login">Need to login?</a></p>
   </form>
