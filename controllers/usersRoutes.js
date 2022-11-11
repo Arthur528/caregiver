@@ -84,6 +84,48 @@ router.post('/login' , (req, res) => {
 
 });
 
+router.delete('/:id', async (req, res) => {
+    if(!req.session.logged_in){
+        return res.status(401).json({msg:"Please login!"})
+      }
+    
+    try {
+      const userDelete = await User.destroy({
+        where: {
+          id:req.params.id
+        }
+      })
+      if (!userDelete) {
+        return res.status(400).json({message: 'User not found!'})
+     }
+  
+    res.status(200).json(userDelete)
+  } catch (err) {
+    console.log(err)
+  }
+  });
+
+  router.put('/:id', async (req, res) => {
+    try {
+      const userUpdate = await User.update(req.body, {
+        
+        
+        where:{
+          id:req.params.id,
+        
+        }
+      })
+  
+      if (!userUpdate) {
+          return res.status(400).json({message: 'User not found!'})
+       }
+  
+      res.status(200).json(userUpdate)
+  } catch (err) {
+      console.log(err)
+  }
+  });
+  
 
        
 
