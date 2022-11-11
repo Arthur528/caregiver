@@ -1,5 +1,5 @@
 const express = require('express');
-const { User } = require('../models');
+const { User, Shift, UserShift, Hospital } = require('../models');
 const router =express.Router();
 
 router.get('/', async (req, res) => {
@@ -28,10 +28,6 @@ router.get('/signup',(req,res)=>{
         nurse_id:null
     })
 });
-
-// router.get("*" , (req,res)=>{
-//     res.render("404")
-// });
 
 //profile route
 router.get('/user/:id',(req,res)=>{
