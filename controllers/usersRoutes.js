@@ -65,13 +65,10 @@ router.post('/login',(req, res) => {
             req.session.logged_in=true;
             res.json(foundUser);
         }
-    
     }).catch(err => {
         console.log(err)
         res.status(500).json({err})
     })
-
-
 });
 
 router.delete('/:id', async (req, res) => {
