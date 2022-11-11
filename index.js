@@ -25,6 +25,7 @@ const sess = {
   })
 };
 app.use(express.static("public"))
+app.use(express.static('views/images'));
 
 const hbs = exphbs.create({});
 app.engine('handlebars', hbs.engine);

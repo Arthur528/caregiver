@@ -4,7 +4,7 @@ const { Hospital, Shift, User } = require('../models');
 const { findAll } = require('../models/Hospital');
 
 // Home route - directs the user to a welcome page that allows them to login in.
-router.get('/', async (req, res) => {
+router.get('/home', async (req, res) => {
     res.render("home"),{
         logged_in:req.session.logged_id,
         nurse_id:req.session.nurse_id,
