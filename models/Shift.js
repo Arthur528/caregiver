@@ -5,6 +5,10 @@ class Shift extends Model {}
 
 Shift.init(
     {
+        day_of_week: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        }, 
         work_shift: {
             type: DataTypes.STRING,
             allowNull: false,

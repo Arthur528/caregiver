@@ -1,30 +1,41 @@
 const Hospital = require('./Hospital.js');
 const Shift = require('./Shift.js');
 const User = require('./User.js');
-const UserShift = require('./UserShift.js');
 
+// User has many to many relationship with users for our "favorites" functionality.
+User.belongsToMany(User, {
+    through: "UserUser",
+    as: "FavoriteUsers"
+});
+
+// A user can belong to many hospitals (different shifts, in same area, etc.).
 User.belongsToMany(Hospital, {
-    through: "UserHospital",
-})
+    through: "UserHospital"
+});
 
+// A hospital has many users (many nurses work there).
 Hospital.belongsToMany(User, {
-    through: "UserHospital",
-})
+    through: "UserHospital"
+});
 
+// A user has multiple shifts.
 User.belongsToMany(Shift, {
-    through: UserShift,
-})
+    through: "UserShift"
+});
 
+// A shift has multiple users (nurses) on it.
 Shift.belongsToMany(User, {
-    through: UserShift,
-})
+    through: "UserShift"
+});
 
+// A hospital has multiple shifts that need to be worked.
 Hospital.belongsToMany(Shift, {
-    through: "HospitalShift",
-})
+    through: "HospitalShift"
+});
 
+// A work shift of the same hours occurs at many hospitals.
 Shift.belongsToMany(Hospital, {
-    through: "HospitalShift",
-})
+    through: "HospitalShift"
+});
 
-module.exports = { User, Shift, Hospital, UserShift };
+module.exports = { User, Shift, Hospital };

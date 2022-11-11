@@ -39,11 +39,10 @@ router.post("/",(req,res)=>{
         req.session.logged_in=true;
         res.json(newUser)
     
-     }).catch(err=>{
+    }).catch(err=>{
         console.log(err)
-        res.status(500).json({
-        })
- })
+        res.status(500).json({})
+  })
 });
 
 router.get("/logout",(req,res)=>{
@@ -60,7 +59,7 @@ router.post('/login',(req, res) => {
         if(!foundUser){
             return res.status(401).json({msg:"Your email or password is incorrect!"})
         }else if(!bcrypt.compareSync(req.body.password, foundUser.password)){
-           return res.status(401).json({msg:"Your email or password is incorrect!" })
+          return res.status(401).json({msg:"Your email or password is incorrect!" })
         } else {
             req.session.nurse_id=foundUser.id;
             req.session.logged_in=true;
@@ -88,7 +87,7 @@ router.delete('/:id', async (req, res) => {
       })
       if (!userDelete) {
         return res.status(400).json({message: 'User not found!'})
-     }
+    }
   
     res.status(200).json(userDelete)
   } catch (err) {
@@ -109,15 +108,12 @@ router.delete('/:id', async (req, res) => {
   
       if (!userUpdate) {
           return res.status(400).json({message: 'User not found!'})
-       }
+      }
   
       res.status(200).json(userUpdate)
   } catch (err) {
       console.log(err)
   }
-  });
-  
-
-       
+});
 
 module.exports = router;

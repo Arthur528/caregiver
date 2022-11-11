@@ -1,7 +1,9 @@
 const express = require('express');
-const { User } = require('../models');
-const router =express.Router();
+const router = express.Router();
+const { Hospital, Shift, User } = require('../models');
+const { findAll } = require('../models/Hospital');
 
+// Home route - directs the user to a welcome page that allows them to login in.
 router.get('/', async (req, res) => {
     res.render("home"),{
         logged_in:req.session.logged_id,
@@ -9,7 +11,13 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/login',(req,res)=>{
+// TODO: Profile page - if a user is logged in, they are able to view their profile page.
+
+// TODO: Edit profile page - if the user is logged in, they are able to edit their profile page.
+
+// TODO: View all nurses page - if the user is logged in, they are able to view all the other nurses (users).
+// Login route - if the user is not logged in, they are able to view the login page and login.
+router.get('/login', (req,res)=>{
     if(req.session.logged_id){
         return res.redirect("/")
     }
@@ -19,7 +27,8 @@ router.get('/login',(req,res)=>{
     })
 });
 
-router.get('/signup',(req,res)=>{
+// Signup route - if the user is not logged in, they are able to view the signup page and signup.
+router.get('/signup', (req,res)=>{
     if(req.session.logged_in){
         return res.redirect("/")
     }
@@ -29,9 +38,34 @@ router.get('/signup',(req,res)=>{
     })
 });
 
-// router.get("*" , (req,res)=>{
-//     res.render("404")
-// });
+// Hospital route - see all the hospitals we have in our database, and find nurses through there.
+router.get("/hospitals", (req, res) => {
+    // TODO: Do you need to be logged in to view the hospitals?
+    Hospital.findAll({
+        include: [Shift, User]
+    }).then(hospitals => {
+        const hospitalsArray = hospitals.map(hospital => hospital.toJSON());
+
+        // CHECK PROGRESS
+        console.log(hospitalsArray);
+        console.log("++++++++++++++++++++++++++++++++++++++++");
+        console.log({hospitalsArray});
+        console.log("=========================================");
+
+        res.render("hospitals", {
+            hospitals: hospitalsArray
+        });
+
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err: "bad move bub"});
+    });
+});
+
+// 404 catch all route - if the user goes to an undefined endpoint, they are served a 404.
+router.get("*" , (req,res)=>{
+    res.render("404")
+});
 
 //profile route
 router.get('/user/:id',(req,res)=>{
@@ -49,6 +83,5 @@ router.get('/user/:id',(req,res)=>{
         nurse_id:null
     })
 });
-
 
 module.exports = router;
