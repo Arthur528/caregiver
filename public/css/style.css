@@ -159,3 +159,7 @@ nav a:hover {
 	background: var(--primary-text);
 	color: var(--secondary-color);
 }
+
+.driving-box {
+    display: none;
+}
