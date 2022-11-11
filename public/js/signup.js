@@ -1,4 +1,7 @@
 const signupForm = document.querySelector("#signupForm");
+const isDriving = document.querySelector("#signupIsDriving");
+const drivingForm = document.querySelector(".driving-box");
+
 signupForm.addEventListener("submit",e=>{
     e.preventDefault();
     const userObj = {
@@ -15,8 +18,8 @@ signupForm.addEventListener("submit",e=>{
         }
     }).then(res=>{
         if(res.ok){
-           alert("success!")
-           return res.json()
+            alert("success!")
+            return res.json()
         } else {
             alert("trumpet sound")
             location.reload();
@@ -25,3 +28,11 @@ signupForm.addEventListener("submit",e=>{
         location.href = `/user/${data.id}`
     })
 })
+
+function showCarForm() {
+    if(isDriving.checked == true) {
+        drivingForm.style.display = "block";
+    } else {
+        drivingForm.style.display = "none";
+    };
+};
