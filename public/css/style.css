@@ -19,6 +19,7 @@
 /* Body Element */
 body {
     font-family: 'League Spartan', sans-serif;
+    background-color: var(--secondary-color);
 }
 
 /* Header Elements */
