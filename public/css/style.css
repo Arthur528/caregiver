@@ -10,10 +10,11 @@
 
 /* Variable Declaration */
 :root {
-    --primary-color: #395144;
-    --secondary-color: #4E6C50;
+    --primary-color: #0e3a67;
+    --secondary-color: #dde3eb;
     --tertiary-color: #AA8B56;
-    --primary-text: #F0EBCE;
+    --primary-text: #000000;
+    --secondary-text: #dde3eb;
 }
 
 /* Body Element */
@@ -25,7 +26,7 @@ body {
 /* Header Elements */
 nav {
     background-color: var(--primary-color);
-    color: var(--primary-text);
+    color: var(--secondary-text)
     flex-direction: column;
     justify-content: center;
     padding: 0;
@@ -63,11 +64,12 @@ nav ul {
 
 nav li {
     padding: 0.5em;
+    
 }
 
 nav a {
     margin: 0.5em;
-    color: var(--primary-text);
+    color: var(--secondary-text);
     padding: 0em 2em;
     position: relative;
     text-decoration: none;
@@ -85,6 +87,8 @@ nav a:hover {
 	max-width: 500px;
 	padding: 20px 12px 10px 20px;
     color: var(--primary-text);
+    display: block;
+    margin-left: 35%;
 }
 
 .form-heading {
@@ -163,3 +167,24 @@ nav a:hover {
 .driving-box {
     display: none;
 }
+h1 {
+    text-align: center;
+    margin: 0.6em;
+}
+
+button {
+    margin: 0.6em;
+    padding: 0em 2em;
+    text-decoration: none;
+    margin-left: 47%;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px;
+	padding: 20px 12px 10px 20px;
+    color: var(--primary-text);
+    display: block;
+  }

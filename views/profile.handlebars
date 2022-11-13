@@ -1,2 +1,38 @@
-<h1>{{username}}</h1>
+
 <h2>This is your profile!</h2>
+<br>
+<hr>
+<div class="profile-box">
+  {{nurse_id}}
+
+  {{#each hospitals}}
+    <br>
+    <h3>Nurse ID: {{nurse_id}}</h3>
+    <br>
+    <p>Name: {{name}}</p>
+    <P>Email: {{email}}</P>
+    <P>Password: {{password}}</P> 
+    <br>
+    <br>
+    {{#each Users}}
+      <h4>Hi! My name is: {{name}}</h4>
+      <br>
+      <h5>A little bit about me: </h5>
+      <br>
+      <p>{{bio}}</p>
+      <br>
+    {{/each}}
+    <h3>Available Shifts:</h3>
+    <br>
+    {{#each Shifts}}
+      <p>Shift Info: {{day_of_week}} at {{work_shift}} for {{schedule_duration}} weeks.</p>
+    {{/each}}
+    <br>
+    <hr>
+  {{/each}}
+  <br>
+  <br>
+</div>
+
+
+<script src="/js/profile.js"></script>

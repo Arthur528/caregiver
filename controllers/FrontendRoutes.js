@@ -3,7 +3,7 @@ const router = express.Router();
 const { Hospital, Shift, User } = require('../models');
 
 // Home route - directs the user to a welcome page that allows them to login in.
-router.get('/home', async (req, res) => {
+router.get('/', async (req, res) => {
     res.render("home"),{
         logged_in:req.session.logged_id,
         nurse_id:req.session.nurse_id,
@@ -75,5 +75,22 @@ router.get("/hospitals", (req, res) => {
 // router.get("*" , (req,res)=>{
 //     res.render("404")
 // });
+
+router.get("/profile", (req, res) => {
+    // TODO: Do you need to be logged in to view the hospitals?
+    Hospital.findAll({
+        include: [Shift, User]
+    }).then(hospitals => {
+        const hospitalsArray = hospitals.map(hospital => hospital.toJSON());
+
+        res.render("profile", {
+            hospitals: hospitalsArray
+        });
+
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err: "bad move bub"});
+    });
+});
 
 module.exports = router;

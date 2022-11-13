@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-const signupForm = document.querySelector("#signupForm");
-const isDriving = document.querySelector("#signupIsDriving");
-const drivingForm = document.querySelector(".driving-box");
-
-=======
 const signupForm = document.querySelector("#signup");
->>>>>>> dev
 signupForm.addEventListener("submit",e=>{
     e.preventDefault();
     const userObj = {
