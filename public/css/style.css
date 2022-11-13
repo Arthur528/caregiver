@@ -6,6 +6,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;    
 }
 
 /* Variable Declaration */
@@ -26,7 +29,7 @@ body {
 /* Header Elements */
 nav {
     background-color: var(--primary-color);
-    color: var(--secondary-text)
+    color: var(--secondary-text);
     flex-direction: column;
     justify-content: center;
     padding: 0;
