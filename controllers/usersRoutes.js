@@ -15,7 +15,7 @@ router.get("/", (req,res) =>{
 });
 
 // A POST route for adding a new user to the database, and creating a logged in session for that new user.
-router.post("/",(req,res)=>{
+router.post("/signup", (req,res) => {
   User.create({
     nurse_id:req.body.nurse_id,
     name:req.body.name,
@@ -35,11 +35,11 @@ router.post("/",(req,res)=>{
     car_color:req.body.car_color,
     HospitalId:req.body.HospitalId,
     ShiftId:req.body.ShiftId,
-  }).then(newUser=>{  
-    req.session.nurse_id=newUser.id;
+  }).then(newUser => {  
+    req.session.user_id=newUser.id;
     req.session.logged_in=true;
     res.json(newUser);
-  }).catch(err=>{
+  }).catch(err => {
     console.log(err);
     res.status(500).json({msg: "Unable to create an account."});
   });
@@ -48,11 +48,11 @@ router.post("/",(req,res)=>{
 // A GET route for logging out a user and ending their login session.
 router.get("/logout",(req,res)=>{
   req.session.destroy();
-  res.json({msg: "Successfully logged out!"});
+  res.redirect("/");
 });
 
 // A POST route for letting a user login and create a login session for them.
-router.post('/login',(req, res) => {
+router.post('/login', (req, res) => {
   User.findOne({
     where:{
       email:req.body.email 
@@ -63,7 +63,7 @@ router.post('/login',(req, res) => {
     }else if(!bcrypt.compareSync(req.body.password, foundUser.password)){
       return res.status(401).json({msg:"Your email or password is incorrect!" });
     } else {
-      req.session.nurse_id=foundUser.id;
+      req.session.user_id=foundUser.id;
       req.session.logged_in=true;
       res.json(foundUser);
     };
