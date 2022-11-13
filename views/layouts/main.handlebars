@@ -24,6 +24,9 @@
                     <li><a href="/api/users">Fellow Nurses</a></li>
                     <li><a href="/users">Favorites</a></li>
                     <li><a href="/hospitals">Hospitals</a></li>
+                    {{#if logged_in}}
+                        <li><a href="/api/users/logout">Logout</a></li>
+                    {{/if}}
                 </ul>
             </div>
         </nav>
@@ -35,5 +38,4 @@
         <hr>
         <h3>&copy; 2022 Caregiver Connection</h3>
     </footer>
-    <script src="/js/logout.js"></script> 
 </body>
