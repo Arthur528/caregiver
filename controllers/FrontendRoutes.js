@@ -81,4 +81,21 @@ router.get("/hospitals", (req, res) => {
 //     res.render("404")
 // });
 
+router.get("/profile", (req, res) => {
+    // TODO: Do you need to be logged in to view the hospitals?
+    Hospital.findAll({
+        include: [Shift, User]
+    }).then(hospitals => {
+        const hospitalsArray = hospitals.map(hospital => hospital.toJSON());
+
+        res.render("profile", {
+            hospitals: hospitalsArray
+        });
+
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err: "bad move bub"});
+    });
+});
+
 module.exports = router;

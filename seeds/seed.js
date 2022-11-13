@@ -1,5 +1,5 @@
 const sequelize = require('../config/connection');
-const { User, Shift, Hospital, UserShift } = require('../models');
+const { User, Shift, Hospital, } = require('../models');
 
 const userData = require('./userData.json');
 const hospitalData = require('./HospitalData.json')
@@ -13,7 +13,10 @@ const seedDatabase = async () => {
     individualHooks: true,
     returning: true,
   });
-
+  
+ Handlebars.registerHelper('loud', function(string) {
+  return string.toUpperCase()
+});
   // Seeds hospital and shift data.
   const hospitals = await Hospital.bulkCreate(hospitalData);
   const shift = await Shift.bulkCreate(shiftData);
@@ -63,6 +66,8 @@ function eliminateFlex(shiftsArray) {
 
   return noFlex;
 };
+
+
 
 
 seedDatabase();
