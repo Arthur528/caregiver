@@ -6,7 +6,7 @@ const addHateForm = document.querySelector("#addHateForm")
 removeLoveBtns.forEach(btn=>{
     btn.addEventListener("click",e=>{
         const idToRemove = e.target.getAttribute("data-id");
-        fetch(`/api/users/love/${idToRemove}`,{
+        fetch(`/api/users/profile/${idToRemove}`,{
             method:"DELETE",
         }).then(res=>{
             if(res.ok){
