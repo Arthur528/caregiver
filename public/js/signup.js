@@ -4,14 +4,10 @@ const drivingForm = document.querySelector(".driving-box");
 const email = document.getElementById("signupEmail")
 const emailError = document.querySelector("#signupEmail + span.error")
 const password = document.getElementById("signupPassword")
-const passwordError = document.querySelector("#signupPassword + span.error")
 const nurseId = document.getElementById("signupNurseId")
 const nurseIdError = document.querySelector("#signupNurseId + span.error")
 // const userName =document.getElementById("signupName")
 // const userNameError=dcoument.querySelector("#signupName + span.error")
-
-signupForm.addEventListener("submit", async e => {
-    e.preventDefault();
 
     const RNvalue = document.querySelector("#signupNurseId").value
 
@@ -72,7 +68,9 @@ signupForm.addEventListener("submit", async e => {
     // .then(data=>{
     //     location.href = `/`;
     // });
-});
+
+
+
 
 function showCarForm() {
     if(isDriving.checked == true) {

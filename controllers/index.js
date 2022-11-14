@@ -2,8 +2,8 @@ const router = require('express').Router();
 
 const usersRoutes = require("./usersRoutes");
 router.use("/api/users", usersRoutes);
-const FrontendRoutes = require("./FrontendRoutes");
-router.use("/", FrontendRoutes);
+const frontendRoutes = require("./FrontendRoutes");
+router.use("/", frontendRoutes);
 
 router.get("/session" , (req,res) => {
     res.json(req.session);
