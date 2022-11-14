@@ -115,4 +115,26 @@ router.put('/:id', async (req, res) => {
   };
 });
 
+router.delete('/favorites', async (req, res) => {
+  if(!req.session.logged_in){
+    return res.status(401).json({msg:"Can't delete your profile if you aren't logged in."})
+  };
+    
+  try {
+    const userDelete = await User.destroy({
+      where: {
+        id:req.params.id
+      }
+    });
+    
+    if (!userDelete) {
+      return res.status(400).json({message: 'User not found.'})
+    };
+  
+    res.status(200).json(userDelete);
+  } catch (err) {
+    console.log(err);
+  };
+});
+
 module.exports = router;

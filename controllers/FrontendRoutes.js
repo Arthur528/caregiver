@@ -96,6 +96,7 @@ router.get("/hospitals", (req, res) => {
 router.get("/users", (req, res) => {
     // TODO: Do you need to be logged in to view the hospitals?
     User.findAll({
+        include:[Hospital,Shift]
 
     }).then(users => {
         const usersArray = users.map(user => user.toJSON());
@@ -115,6 +116,28 @@ router.get("/users", (req, res) => {
 //     res.render("404")
 // });
 
+
+
+
+router.get("/favorites", (req, res) => {
+    if(!req.session.logged_in){
+        return res.render("login")
+    }
+    
+    User.findByPk(req.session.user_id, {
+        include: ["FavoriteUsers", Hospital]
+    }).then(users => {
+        const userArray = users.toJSON();
+        
+        res.render("favorites", {
+            users: userArray
+        });
+
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err: "bad move bub"});
+    });
+});
 
 
 module.exports = router;
