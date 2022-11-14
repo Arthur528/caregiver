@@ -15,6 +15,20 @@ router.get('/', (req, res) => {
     res.render("home", hbsSession);
 });
 
+router.get('/find-ride', (req, res) => {
+    console.log(req.session.logged_in);
+    console.log(req.session.user_id);
+    res.render("find-ride");
+});
+
+router.get('/contact-nurse', (req, res) => {
+    console.log(req.session.logged_in);
+    console.log(req.session.user_id);
+    res.render("contact");
+});
+
+
+
 // Profile page - if a user is logged in, they are able to view their profile page.
 router.get('/profile', (req,res) => {
     if(!req.session.logged_in) {
