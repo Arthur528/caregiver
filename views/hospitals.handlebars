@@ -1,0 +1,37 @@
+<h2>These are the Hospitals:</h2>
+<br>
+<hr>
+<div class="hospital-box">
+  {{#each hospitals}}
+    <br>
+    <h3>Hospital Name: {{hospital_name}}</h3>
+    <br>
+    <p>Location: {{street_address}}, {{city}}, {{zip_code}}</p>
+    <br>
+
+    {{#if ../logged_in}}
+      <h3>Meet our nurses:</h3>
+      <br>
+      {{#each Users}}
+        <h4>Hi! My name is: {{name}}</h4>
+        <br>
+        <h5>A little bit about me: </h5>
+        <br>
+        <p>{{bio}}</p>
+        <br>
+      {{/each}}
+      <h3>Available Shifts:</h3>
+      <br>
+      {{#each Shifts}}
+        <p>Shift Info: {{day_of_week}} at {{work_shift}} for {{schedule_duration}} weeks.</p>
+      {{/each}}
+    {{else}}
+      <h4>In order to view nurse and shift information, please log in!</h4>
+    {{/if}}
+    <br>
+    <hr>
+  {{/each}}
+  <br>
+  <br>
+  <hr>
+</div>

@@ -1,0 +1,47 @@
+<h2>This is your Profile:</h2>
+<br>
+<hr>
+<div class="Profile">
+  {{#each profile}}
+    <br>
+    <h3>Nurse ID:{{nurse_id}}</h3>
+    <h3>Name:</h3>
+    {{name}}
+    <br>
+    <br>
+    <h3>Email:</h3>
+    {{email}}
+    <br>
+    <br>
+    <h3>Bio:</h3>
+    {{bio}}
+    <br>
+    <br>
+    <h3>Shift Info:</h3>
+    {{ shift_info }}
+    <br>
+    <br>
+    <h3>Location:</h3>
+    <p>{{street_address}}, {{city}}, {{zip_code}}</p>
+    <br>
+    <br>
+    <h3>Drives:</h3>
+    {{is_driving}}
+    <br>
+    <br>
+    <h3>Car Info:</h3>
+    <p>{{car_make}}, {{car_model}}, {{car_color}}</p>
+    <br>
+    <br>
+    <h3>Hospital ID:</h3>
+    {{HospitalId}}
+    <br>
+    <br>
+    <h3>Shift:</h3>
+    {{ShiftId}}
+    <br>
+    <hr>
+  {{/each}}
+  <br>
+  <br>
+</div>

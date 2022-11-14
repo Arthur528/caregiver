@@ -1,0 +1,60 @@
+<div class="form">
+  <div class="form-heading">Sign-up</div>
+  <form action="" id="signupForm">
+
+    <label for="signupNurseId"><span>Nurse ID<span class="required"> *</span></span><input type="text" class="input-field" name="signupNurseId" id="signupNurseId" placeholder="RN00000000"/></label>
+
+    <label for="signupName"><span>Name<span class="required"> *</span></span><input type="text" class="input-field" name="signupName" id="signupName" placeholder="John/Jane Doe"/></label>
+
+    <label for="signupEmail"><span>E-mail<span class="required"> *</span></span><input type="text" class="input-field" name="signupEmail" id="signupEmail" placeholder="you@place.com"/></label>
+
+    <label for="signupPassword"><span>Password<span class="required"> *</span></span><input type="password" class="input-field" name="signupPassword" id="signupPassword" placeholder="supersecretpassword"/></label>
+
+    <label for="signupPhoneNumber"><span>Phone Number</span><input type="text" class="input-field" name="signupPhoneNumber" id="signupPhoneNumber" value="" placeholder="111-222-3333"/></label>
+
+    <label for="signupBio"><span>Biography</span><textarea class="input-field" name="signupBio" id="signupBio" value="" placeholder="Now this is a story all about how..."></textarea></label>
+
+    <label for="signupReferral"><span>Referral</span><select name="signupReferral" class="select-field" id="signupReferral" value="" >
+      <option value="friend">Friend</option>
+      <option value="web">Website</option>
+      <option value="other">Other</option>
+    </select></label>
+
+    <label for="signupStreetAddress"><span>Street Address</span><input type="text" class="input-field" name="signupStreetAddress" id="signupStreetAddress" value=""  placeholder="1234 Main St."/></label>
+
+    <label for="signupCity"><span>City</span><input type="text" class="input-field" name="signupCity" id="signupCity" value="" placeholder="Gotham City"/></label>
+
+    <label for="signupZipCode"><span>Zip Code</span><input type="text" class="input-field" name="signupZipCode" id="signupZipCode" value="" placeholder="90210"/></label>
+
+    {{!-- TODO: HospitalId --}}
+    <label for="signupHospital"><span>Hospital</span><select name="signupHospital" class="select-field" id="signupHospital" value="">
+      <option value="friend">H1</option>
+      <option value="web">H2</option>
+      <option value="other">H3</option>
+    </select></label>
+
+    {{!-- TODO: shift-info -- NEEDS TO BECOME SHIFT RELATED INFO, TIED TO ShiftId --}}
+
+    <label for="signupIsDriving"><span>Available to Drive</span><input type="checkbox" class="checkbox-field" name="signupIsDriving" id="signupIsDriving" onclick="showCarForm()"></label>
+
+    <br>
+
+    {{!-- TODO: Only show whats below if is_driving is checked. --}}
+    <div class="driving-box">
+      <label for="signupLicensePlate"><span>Lincense Plate</span><input type="text" class="input-field" name="signupLicensePlate" id="signupLicensePlate" value=""  placeholder="A1 UX861"/></label>
+
+      <label for="signupCarMake"><span>Car Make</span><input type="text" class="input-field" name="signupCarMake" id="signupCarMake" value="" placeholder="Bugatti"/></label>
+
+      <label for="signupCarModel"><span>Car Model</span><input type="text" class="input-field" name="signupCarModel" id="signupCarModel" value="" placeholder="La Voiture Noir"/></label>
+
+      <label for="signupCarColor"><span>Car Color</span><input type="text" class="input-field" name="signupCarColor" id="signupCarColor" value="" placeholder="Black"/></label>
+    </div>
+
+    {{!-- TODO: Add profile picks using cloudinary --}}
+    
+    <label><span> </span><input type="submit" value="Sign-up"/></label>
+    <p><a href="/login">Need to login?</a></p>
+  </form>
+</div>
+
+<script src="/js/signup.js"></script>

@@ -1,0 +1,33 @@
+[
+    {
+      "hospital_name": "MultiCare Tacoma General Hospital",
+      "street_address": "315 Martin Luther King Junior Way",
+      "city": "Tacoma", 
+      "zip_code": "98405"
+    },
+    {
+      "hospital_name": "Central Washington Hospital & Clinics Campus",
+      "street_address": "1201 S Miller St, ",
+      "city": "Wenatchee", 
+      "zip_code": "98801"
+    },
+    {
+      "hospital_name": "Three Rivers Hospital",
+      "street_address": "507 Hospital Way",
+      "city": "Brewster", 
+      "zip_code": "98812"
+    },
+    {
+      "hospital_name": "Columbia Basin Hospital",
+      "street_address": "200 Nat Washington Way",
+      "city": "Ephrata", 
+      "zip_code": "98823"
+    },
+    {
+      "hospital_name": "Prosser Memorial Hospital",
+      "street_address": "723 Memorial St",
+      "city": "Prosser", 
+      "zip_code": "99350"
+    }
+  ]
+  

@@ -1,0 +1,52 @@
+<h2>These are the Users:</h2>
+<br>
+<hr>
+<div class="User">
+  {{#each users}}
+    <br>
+    <h3>Nurse ID:{{nurse_id}}</h3>
+    <h3>Name:</h3>
+    {{name}}
+    <br>
+    <br>
+    <h3>Email:</h3>
+    {{email}}
+    <br>
+    <br>
+    <h3>Bio:</h3>
+    {{bio}}
+    <br>
+    <br>
+    <h3>Shift Info:</h3>
+    {{ shift_info }}
+    <br>
+    <br>
+    <h3>Location:</h3>
+    <p>{{street_address}}, {{city}}, {{zip_code}}</p>
+    <br>
+    <br>
+    <h3>Drives:</h3>
+    {{is_driving}}
+    <br>
+    <br>
+    <h3>Car Info:</h3>
+    <p>{{car_make}}, {{car_model}}, {{car_color}}</p>
+    <br>
+    <br>
+    <h3>Hospital Name:</h3>
+    {{#each Hospitals}}
+    <p>{{hospital_name}}</p>
+    {{/each}}
+    <br>
+    <br>
+    <h3>Shift:</h3>
+     {{#each Shifts}}
+    <p>{{work_shift}}</p>
+    {{/each}}
+    {{ShiftId}}
+    <br>
+    <hr>
+  {{/each}}
+  <br>
+  <br>
+</div>
