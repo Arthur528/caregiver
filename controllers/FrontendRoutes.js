@@ -76,6 +76,23 @@ router.get("/hospitals", (req, res) => {
     });
 });
 
+router.get("/users", (req, res) => {
+    // TODO: Do you need to be logged in to view the hospitals?
+    User.findAll({
+        include: [Hospital, Shift]
+    }).then(users => {
+        const usersArray = users.map(user => user.toJSON());
+
+        res.render("users", {
+            users: usersArray
+        });
+
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err: "bad move bub"});
+    });
+});
+
 // 404 catch all route - if the user goes to an undefined endpoint, they are served a 404.
 // router.get("*" , (req,res)=>{
 //     res.render("404")
@@ -83,13 +100,13 @@ router.get("/hospitals", (req, res) => {
 
 router.get("/profile", (req, res) => {
     // TODO: Do you need to be logged in to view the hospitals?
-    Hospital.findAll({
-        include: [Shift, User]
-    }).then(hospitals => {
-        const hospitalsArray = hospitals.map(hospital => hospital.toJSON());
+    User.findOne({
 
-        res.render("profile", {
-            hospitals: hospitalsArray
+    }).then(users => {
+        const usersArray = users.map(user => user.toJSON());
+
+        res.render("", {
+            users: usersArray
         });
 
     }).catch(err => {

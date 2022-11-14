@@ -13,7 +13,10 @@ const seedDatabase = async () => {
     individualHooks: true,
     returning: true,
   });
+<<<<<<< HEAD
   
+=======
+>>>>>>> dev
 
   // Seeds hospital and shift data.
   const hospitals = await Hospital.bulkCreate(hospitalData);
@@ -49,8 +52,9 @@ const seedDatabase = async () => {
   await hospitals[2].addShifts(shiftsIdArray);
   await hospitals[3].addShifts(shiftsIdArray.slice(0, 57));
   await hospitals[4].addShifts(noFlex);
-  
+
   process.exit(0);
+
 };
 
 function eliminateFlex(shiftsArray) {

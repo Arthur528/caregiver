@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const removeFavBtns = document.querySelectorAll(".removeFave");
 
 
@@ -16,3 +17,5 @@ removeFavBtns.forEach(btn=>{
         })
     })
 })
+=======
+>>>>>>> dev
