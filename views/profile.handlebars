@@ -32,39 +32,61 @@ document.getElementById("upload_widget").addEventListener("click", function(){
 <br>
 <hr>
 <div class="Profile">
-   <h3>Nurse ID:{{nurse_id}}</h3>
-    <h3>Name:</h3>
-    {{name}}
-  <h2>Name: {{users.name}}</h2>
-    <br>
-    <h3>Favorite Nurse: {{name}}</h3>
-    <br>
-    <h3>Location:{{street_address}}, {{city}}, {{zip_code}}</h3>
-    <br>
-    <h3>Bio: {{bio}}</h3>
-    <br>
-    <h3>Phone Number:{{phone_number}} </h3>
-    <br>
-    <h3>Email:{{email}}</h3>
-    <br>
-    <h3>Driving:{{is_driving}}</h3>
-    <br>
-    <br>
-    <h3>Hospital Name:</h3>
-    {{#each hospital}}
-    <p>{{hospital_name}}</p>
-    {{/each}}
-    <br>
-    <br>
-    <h3>Shift:</h3>
-    {{log work_shift}}
-     {{#each Shifts}}
-    <p>{{work_shift}}</p>
-    {{/each}}
-    {{ShiftId}}
-    {{log hospitals}}
-    {{log shift}}
+  <img src="https://www.tjminc.com/wp-content/uploads/2020/01/tj-mccartney-hospital-mass-gen-lunder-building-2.jpg" width="150px" height="150px" alt="hospital" class="center"/>
+  <h2>Please add image here</h2>
+  <button class="profile-picture" id="profile-picture" user-id={{id}}>Change Profile Picture</button>
   <br>
+  <h3>Nurse ID:{{nurse_id}}</h3>
+  <h3>Name:</h3>
+  {{name}}
+  <br>
+  <br>
+  <h3>Email:</h3>
+  {{email}}
+  <br>
+  <br>
+  <h3>Bio:</h3>
+  {{bio}}
+  <br>
+  <br>
+  <h3>Shift Info:</h3>
+  {{ shift_info }}
+  <br>
+  <br>
+  <h3>Location:</h3>
+  <p>{{street_address}}, {{city}}, {{zip_code}}</p>
+  <br>
+  <br>
+  <h3>Drives:</h3>
+  {{is_driving}}
+  <br>
+  <br>
+  <h3>Car Info:</h3>
+  <p>{{car_make}}, {{car_model}}, {{car_color}}</p>
+  <br>
+  <br>
+  <h3>Hospitals:</h3>
+  <div class="all-hospitals">
+    {{#each Hospitals}}
+      <div class="hospital-box" id="{{id}}">
+        <h3>Hospital Name: {{hospital_name}}</h3>
+        <h4>Address: {{street_address}}, {{city}} {{zip_code}}</h4>
+        <button class="delete-hospital" id="delete-hospital-{{id}}">Remove Hospital</button>
+      </div>
+    {{/each}}
+  </div>
+  <br>
+  <br>
+  <h3>Shifts:</h3>
+  {{#each Shifts}}
+    <div class="shift-box">
+      <h3>Shift Block: {{work_shift}} on {{day_of_week}}</h3>
+      <h4>Duration: {{schedule_duration}} weeks</h4>
+      <button class="delete-shift">Remove Shift</button>
+    </div>
+  {{/each}}
+  <br>
+  <button class="edit-profile" id="edit-profile">Edit Profile</button>
   <br>
   <button class="delete-profile"user-id={{id}}>Remove Profile</button>
   <script src="/js/profile.js"></script>

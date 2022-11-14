@@ -18,8 +18,8 @@ router.get("/", (req,res) =>{
 // A POST route for adding a new user to the database, and creating a logged in session for that new user.
 router.post("/signup", (req,res) => {
   User.create({
-    nurse_id:req.body.nurse_id,
-    name:req.body.name,
+    nurse_id: req.body.nurse_id,
+    name: req.body.name,
     email:req.body.email,
     password:req.body.password,
     phone_number:req.body.phone_number,
@@ -83,7 +83,7 @@ router.delete('/:id', async (req, res) => {
   try {
     const userDelete = await User.destroy({
       where: {
-        id:req.params.id
+        id: req.params.id
       }
     });
     
@@ -116,6 +116,7 @@ router.put('/:id', async (req, res) => {
   };
 });
 
+
 router.delete('/favorites', async (req, res) => {
   if(!req.session.logged_in){
     return res.status(401).json({msg:"Can't delete your profile if you aren't logged in."})
@@ -130,6 +131,29 @@ router.delete('/favorites', async (req, res) => {
     
     if (!userDelete) {
       return res.status(400).json({message: 'User not found.'})
+    };
+  
+    res.status(200).json(userDelete);
+  } catch (err) {
+    console.log(err);
+  };
+});
+
+// A DELETE route for a hospital from a user's hospital table.
+router.delete('/:id', async (req, res) => {
+  if(!req.session.logged_in){
+    return res.status(401).json({msg:"Can't delete a hospital from your profile if you aren't logged in."});
+  };
+    
+  try {
+    const hospitalDelete = await Hospital.destroy({
+      where: {
+        id: req.params.id
+      }
+    });
+    
+    if (!hospitalDelete) {
+      return res.status(400).json({message: 'Hospital not found.'})
     };
   
     res.status(200).json(userDelete);
