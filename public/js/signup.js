@@ -28,7 +28,7 @@ signupForm.addEventListener("submit", e => {
 
     console.log(userObj);
 
-    fetch("/api/users/signup",{
+    fetch("/api/users/signup", {
         method:"POST",
         body:JSON.stringify(userObj),
         headers:{

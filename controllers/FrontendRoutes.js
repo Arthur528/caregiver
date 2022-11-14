@@ -4,29 +4,18 @@ const { Hospital, Shift, User } = require('../models');
 
 // Home route - directs the user to a welcome page that allows them to login in.
 router.get('/', (req, res) => {
-    res.render("home", {
-        logged_in: req.session.logged_in,
-        user_id: req.session.user_id
-    });
-});
+    console.log(req.session.logged_in);
+    console.log(req.session.user_id);
 
-router.get('/find-ride', (req, res) => {
-    res.render("find-ride", {
+    const hbsSession = {
         logged_in: req.session.logged_in,
-        user_id: req.session.user_id
-    });
-});
+        user_id: req.session.user_id,
+    };
 
-router.get('/contact-nurse', (req, res) => {
-    res.render("contact", {
-        logged_in: req.session.logged_in,
-        user_id: req.session.user_id
-    });
+    res.render("home", hbsSession);
 });
-
 
 // Profile page - if a user is logged in, they are able to view their profile page.
-
 router.get('/profile', (req,res) => {
     if(!req.session.logged_in) {
         return res.redirect("/login");
@@ -38,6 +27,8 @@ router.get('/profile', (req,res) => {
             return res.redirect("/404")
         }
         const hbsUser = foundUser.toJSON();
+        hbsUser.logged_in=true;
+
         res.render("profile", hbsUser);
     })
 });
@@ -92,15 +83,17 @@ router.get('/signup', (req,res) => {
 
 // Hospital route - see all the hospitals we have in our database, and find nurses through there.
 router.get("/hospitals", (req, res) => {
-    // TODO: Do you need to be logged in to view the hospitals?
     Hospital.findAll({
         include: [Shift, User]
     }).then(hospitals => {
         const hospitalsArray = hospitals.map(hospital => hospital.toJSON());
 
-        res.render("hospitals", {
-            hospitals: hospitalsArray
-        });
+        const hbsHospital = {
+            hospitals: hospitalsArray,
+            logged_in: req.session.logged_in
+        };
+
+        res.render("hospitals", hbsHospital);
 
     }).catch(err => {
         console.log(err);
@@ -109,16 +102,18 @@ router.get("/hospitals", (req, res) => {
 });
 
 router.get("/users", (req, res) => {
-    // TODO: Do you need to be logged in to view the hospitals?
     User.findAll({
         include:[Hospital,Shift]
 
     }).then(users => {
         const usersArray = users.map(user => user.toJSON());
 
-        res.render("users", {
-            users: usersArray
-        });
+        const hbsUsers = {
+            users: usersArray,
+            logged_in: req.session.logged_in
+        };
+
+        res.render("users", hbsUsers);
 
     }).catch(err => {
         console.log(err);
@@ -143,10 +138,13 @@ router.get("/favorites", (req, res) => {
         include: ["FavoriteUsers", Hospital]
     }).then(users => {
         const userArray = users.toJSON();
+
+        const hbsFavorites = {
+            users: userArray,
+            logged_in: req.session.logged_in
+        };
         
-        res.render("favorites", {
-            users: userArray
-        });
+        res.render("favorites", hbsFavorites);
 
     }).catch(err => {
         console.log(err);
