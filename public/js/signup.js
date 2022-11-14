@@ -52,6 +52,8 @@ signupForm.addEventListener("submit", e => {
     // });
 });
 
+
+
 function showCarForm() {
     if(isDriving.checked == true) {
         drivingForm.style.display = "block";
