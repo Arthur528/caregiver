@@ -116,22 +116,6 @@ router.get("/users", (req, res) => {
 // });
 
 
-<<<<<<< HEAD
-    }).then(users => {
-        const usersArray = users.map(user => user.toJSON());
-        
-
-        res.render("", {
-            users: usersArray
-        });
-
-    }).catch(err => {
-        console.log(err);
-        res.status(500).json({err: "bad move bub"});
-    });
-});
-=======
->>>>>>> dev
 
 
 router.get("/favorites", (req, res) => {
