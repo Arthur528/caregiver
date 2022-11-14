@@ -115,6 +115,7 @@ router.put('/:id', async (req, res) => {
   };
 });
 
+
 router.delete('/favorites', async (req, res) => {
   if(!req.session.logged_in){
     return res.status(401).json({msg:"Can't delete your profile if you aren't logged in."})
@@ -129,6 +130,29 @@ router.delete('/favorites', async (req, res) => {
     
     if (!userDelete) {
       return res.status(400).json({message: 'User not found.'})
+    };
+  
+    res.status(200).json(userDelete);
+  } catch (err) {
+    console.log(err);
+  };
+});
+
+// A DELETE route for a hospital from a user's hospital table.
+router.delete('/:id', async (req, res) => {
+  if(!req.session.logged_in){
+    return res.status(401).json({msg:"Can't delete a hospital from your profile if you aren't logged in."});
+  };
+    
+  try {
+    const hospitalDelete = await Hospital.destroy({
+      where: {
+        id: req.params.id
+      }
+    });
+    
+    if (!hospitalDelete) {
+      return res.status(400).json({message: 'Hospital not found.'})
     };
   
     res.status(200).json(userDelete);

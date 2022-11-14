@@ -31,8 +31,13 @@ signupForm.addEventListener("submit", async e => {
     console.log(userObj);
 
     const isRegisteredNurse = await checkRegisteredNurseStatus(RNvalue);
+
+    // TODO: Get this async await working properly
+    console.log("OUTSIDE THE FUNCTION TO CHECK:");
+    console.log(isRegisteredNurse);
     
     if(isRegisteredNurse) {
+        console.log("IS A RN!!!");
         fetch("/api/users/signup", {
             method:"POST",
             body:JSON.stringify(userObj),
@@ -50,6 +55,8 @@ signupForm.addEventListener("submit", async e => {
                 location.reload();
             }
         });
+    } else {
+        console.log("NOT A RN----");
     };
 
 
@@ -67,21 +74,20 @@ function showCarForm() {
     };
 };
 
-function checkRegisteredNurseStatus(RNvalue) {
-    console.log("+++++++++++++++++++++++++++++++++++++++++");
-    console.log("+++++++++++++++++++++++++++++++++++++++++");
-    console.log(RNvalue);
-    console.log("+++++++++++++++++++++++++++++++++++++++++");
-    console.log("+++++++++++++++++++++++++++++++++++++++++");
+async function checkRegisteredNurseStatus(RNvalue) {
+    const nursesAPIURL = 'https://data.wa.gov/resource/688k-siuy.json?credentialnumber=' + RNvalue;
 
-    fetch({
-        method: 'get',
-        url: 'https://data.wa.gov/resource/688k-siuy.json?credentialnumber=' + RNvalue,
-    })
-    .then(function (response) {
-        console.log(response);
-        console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        console.log(response.data);
-
+    fetch(nursesAPIURL)
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data);
+        console.log(data.length);
+        if(data.length == 0) {
+            console.log("FALSE!");
+            return false;
+        } else {
+            console.log("TRUE!");
+            return true;
+        };
     });
 };

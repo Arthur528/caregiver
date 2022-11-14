@@ -12,7 +12,7 @@ deleteHospitalButtons.forEach(button => {
     button.addEventListener("click", e => {
         const idToRemove = e.target.parentElement.id;
         
-        fetch()
+        // fetch()
         console.log(idToRemove);
     });
 });
