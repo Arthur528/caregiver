@@ -140,8 +140,25 @@ router.get("/users", (req, res) => {
 //     res.render("404")
 // });
 
+// Find a Ride
+router.get('/find-ride', (req, res) => {
+    const hbsSession = {
+        logged_in: req.session.logged_in,
+        user_id: req.session.user_id,
+    };
 
+    res.render("find-ride", hbsSession);
+});
 
+// Contact Nurse
+router.get('/contact-nurse', (req, res) => {
+    const hbsSession = {
+        logged_in: req.session.logged_in,
+        user_id: req.session.user_id,
+    };
+
+    res.render("contact", hbsSession);
+});
 
 router.get("/favorites", (req, res) => {
     if(!req.session.logged_in){
