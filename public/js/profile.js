@@ -1,11 +1,10 @@
-<<<<<<< HEAD
-const removeFavBtns = document.querySelectorAll(".removeFave");
+const removeFavBtns = document.querySelectorAll("removeFave");
 
 
 removeFavBtns.forEach(btn=>{
     btn.addEventListener("click",e=>{
-        const idToRemove = e.target.getAttribute("user_id");
-        fetch(`/api/users/${idToRemove}`,{
+        const idToRemove = e.target.getAttribute("user-id");
+        fetch(`/favorites/${idToRemove}`,{
             method:"DELETE",
         }).then(res=>{
             if(res.ok){
@@ -17,5 +16,3 @@ removeFavBtns.forEach(btn=>{
         })
     })
 })
-=======
->>>>>>> dev

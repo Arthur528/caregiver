@@ -13,10 +13,7 @@ const seedDatabase = async () => {
     individualHooks: true,
     returning: true,
   });
-<<<<<<< HEAD
   
-=======
->>>>>>> dev
 
   // Seeds hospital and shift data.
   const hospitals = await Hospital.bulkCreate(hospitalData);
