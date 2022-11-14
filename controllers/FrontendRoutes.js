@@ -98,4 +98,26 @@ router.get("/profile", (req, res) => {
     });
 });
 
+
+router.get("/favorites", (req, res) => {
+    if(!req.session.logged_in){
+        return res.render("login")
+    }
+    
+    User.findAll({
+        include: ["FavoriteUsers"]
+    }).then(users => {
+        const usersArray = users.map(user => user.toJSON());
+
+        res.render("favorites", {
+            Users: usersArray
+        });
+
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err: "bad move bub"});
+    });
+});
+
+
 module.exports = router;

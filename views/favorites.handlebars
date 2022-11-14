@@ -1,0 +1,32 @@
+<h2>These are your favorite nurses:</h2>
+<br>
+<hr>
+<div class="User-box">
+    {{#each Users}}
+    <br>
+    <h3>name: {{name}}</h3>
+
+     {{#each favorite_user_id}}
+    <br>
+    <h3>Favorite Nurses: {{name}}</h3>
+    <br>
+    <h3>Location: {{street_address}}, {{city}}, {{zip_code}}</h3>
+    <br>
+    <h3>Bio: {{bio}}</h3>
+    <br>
+    <h3>Phone Number:{{phone_number}} </h3>
+    <br>
+    <h3>Email:{{email}}</h3>
+    {{/each}}
+    <h3>Available Shifts:</h3>
+    <br>
+    {{#each Shifts}}
+      <p>Shift Info: {{day_of_week}} at {{work_shift}} for {{schedule_duration}} weeks.</p>
+    {{/each}}
+    <br>
+    <hr>
+  {{/each}}
+  <br>
+  <br>
+</div>
+    

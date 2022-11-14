@@ -14,9 +14,7 @@ const seedDatabase = async () => {
     returning: true,
   });
   
- Handlebars.registerHelper('loud', function(string) {
-  return string.toUpperCase()
-});
+
   // Seeds hospital and shift data.
   const hospitals = await Hospital.bulkCreate(hospitalData);
   const shift = await Shift.bulkCreate(shiftData);

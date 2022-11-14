@@ -1,12 +1,10 @@
-const removeLoveBtns = document.querySelectorAll(".removeLove");
-const removeHateBtns = document.querySelectorAll(".removeHate");
-const addLoveForm = document.querySelector("#addLoveForm")
-const addHateForm = document.querySelector("#addHateForm")
+const removeFavBtns = document.querySelectorAll(".removeFave");
 
-removeLoveBtns.forEach(btn=>{
+
+removeFavBtns.forEach(btn=>{
     btn.addEventListener("click",e=>{
-        const idToRemove = e.target.getAttribute("data-id");
-        fetch(`/api/users/profile/${idToRemove}`,{
+        const idToRemove = e.target.getAttribute("user_id");
+        fetch(`/api/users/${idToRemove}`,{
             method:"DELETE",
         }).then(res=>{
             if(res.ok){
@@ -16,47 +14,5 @@ removeLoveBtns.forEach(btn=>{
 
             }
         })
-    })
-})
-removeHateBtns.forEach(btn=>{
-    btn.addEventListener("click",e=>{
-        const idToRemove = e.target.getAttribute("data-id");
-        fetch(`/api/users/hate/${idToRemove}`,{
-            method:"DELETE",
-        }).then(res=>{
-            if(res.ok){
-               location.reload()
-            } else {
-                alert("trumpet sound")
-
-            }
-        })
-    })
-})
-
-addLoveForm.addEventListener("submit",e=>{
-    e.preventDefault();
-    const addLoveId = document.querySelector("#chosenLoveFlavor").value;
-    fetch(`/api/users/love/${addLoveId}`,{
-        method:"POST"
-    }).then(res=>{
-        if(res.ok){
-           location.reload()
-        } else {
-            alert("trumpet sound")
-        }
-    })
-})
-addHateForm.addEventListener("submit",e=>{
-    e.preventDefault();
-    const addHateId = document.querySelector("#chosenHateFlavor").value;
-    fetch(`/api/users/hate/${addHateId}`,{
-        method:"POST"
-    }).then(res=>{
-        if(res.ok){
-           location.reload()
-        } else {
-            alert("trumpet sound")
-        }
     })
 })
