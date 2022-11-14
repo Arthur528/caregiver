@@ -96,7 +96,7 @@ router.get("/hospitals", (req, res) => {
 router.get("/users", (req, res) => {
     // TODO: Do you need to be logged in to view the hospitals?
     User.findAll({
-
+        include: [Hospital, Shift]
     }).then(users => {
         const usersArray = users.map(user => user.toJSON());
 
