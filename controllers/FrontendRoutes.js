@@ -10,6 +10,21 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/find-ride', (req, res) => {
+    res.render("find-ride", {
+        logged_in: req.session.logged_in,
+        user_id: req.session.user_id
+    });
+});
+
+router.get('/contact-nurse', (req, res) => {
+    res.render("contact", {
+        logged_in: req.session.logged_in,
+        user_id: req.session.user_id
+    });
+});
+
+
 // Profile page - if a user is logged in, they are able to view their profile page.
 
 router.get('/profile', (req,res) => {
