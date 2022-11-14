@@ -12,9 +12,9 @@
       <option value="5">5</option>
       <option value="6">6</option>
     </select></label>
-    <h1>GPS Location Map</h1>
-    <img src="https://www.tjminc.com/wp-content/uploads/2020/01/tj-mccartney-hospital-mass-gen-lunder-building-2.jpg" width="500px" height="400px" alt="hospital" class="center"/>
-    
+<div class="google map div">  
+          <div id="map"></div>
+        </div>
 
     <label for="dropOff"><span>Drop Off location:<span class="required"> *</span></span><input type="text" class="input-field" name="dropOff" id="dropOff" placeholder="1201 S Miller St, "/></label>
 
@@ -22,12 +22,31 @@
 
     <label for="date"><span>Date for ride:<span class="required">*</span></span><input type="text" class="input-field" name="date" id="date" placeholder="11/15/2022"/></label>
 
-    <button class="bookRide">Schudle Ride</button>
+    <button class="bookRide">Schedule Ride</button>
     <button class="cancelRide">Cancel</button>
     <p><a href="/profile">Back to profile!</a></p>
     
   </form>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>function initMap() {
+  const myLatLng = { lat: 47.608013, lng: -122.335167};
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 10,
+    center: myLatLng,
+  });
+
+  new google.maps.Marker({
+    position: myLatLng,
+    map,
+    title: "Hello World!",
+  });
+}
+</script>
+<script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJLf29sQ9sjkmYfwUXNiCguIrvTewC6BU&libraries=geometry,places&callback=initMap">
+
+</script>
 
 <script src="/js/signup.js"></script>
 
