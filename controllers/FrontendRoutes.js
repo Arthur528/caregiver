@@ -11,6 +11,23 @@ router.get('/', (req, res) => {
 });
 
 // Profile page - if a user is logged in, they are able to view their profile page.
+
+router.get('/profile', (req,res) => {
+    if(!req.session.logged_in) {
+        return res.redirect("/login");
+    };
+
+    User.findByPk(req.session.user_id, {
+    }).then(foundUser=> {
+        if(!foundUser){
+            return res.redirect("/404")
+        }
+        const hbsUser = foundUser.toJSON();
+        res.render("profile", hbsUser);
+    })
+});
+
+//User page - if a user is logged in, they are able to view other profile pages. 
 router.get('/user/:id', (req,res) => {
     if(!req.session.logged_in) {
         return res.redirect("/login");
@@ -79,7 +96,7 @@ router.get("/hospitals", (req, res) => {
 router.get("/users", (req, res) => {
     // TODO: Do you need to be logged in to view the hospitals?
     User.findAll({
-        include: [Hospital, Shift]
+
     }).then(users => {
         const usersArray = users.map(user => user.toJSON());
 
@@ -98,10 +115,8 @@ router.get("/users", (req, res) => {
 //     res.render("404")
 // });
 
-router.get("/profile", (req, res) => {
-    // TODO: Do you need to be logged in to view the hospitals?
-    User.findOne({
 
+<<<<<<< HEAD
     }).then(users => {
         const usersArray = users.map(user => user.toJSON());
         
@@ -115,6 +130,8 @@ router.get("/profile", (req, res) => {
         res.status(500).json({err: "bad move bub"});
     });
 });
+=======
+>>>>>>> dev
 
 
 router.get("/favorites", (req, res) => {
