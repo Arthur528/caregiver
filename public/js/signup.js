@@ -1,6 +1,10 @@
 const signupForm = document.querySelector("#signupForm");
 const isDriving = document.querySelector("#signupIsDriving");
 const drivingForm = document.querySelector(".driving-box");
+const email = document.getElementById("signupEmail")
+const emailError = document.querySelector("#signupEmail + span.error")
+const password = document.getElementById("signupPassword")
+
 
 signupForm.addEventListener("submit", async e => {
     e.preventDefault();
@@ -66,28 +70,12 @@ signupForm.addEventListener("submit", async e => {
     // });
 });
 
+
+
 function showCarForm() {
     if(isDriving.checked == true) {
         drivingForm.style.display = "block";
     } else {
         drivingForm.style.display = "none";
     };
-};
-
-async function checkRegisteredNurseStatus(RNvalue) {
-    const nursesAPIURL = 'https://data.wa.gov/resource/688k-siuy.json?credentialnumber=' + RNvalue;
-
-    fetch(nursesAPIURL)
-    .then((response) => response.json())
-    .then((data) => {
-        console.log(data);
-        console.log(data.length);
-        if(data.length == 0) {
-            console.log("FALSE!");
-            return false;
-        } else {
-            console.log("TRUE!");
-            return true;
-        };
-    });
 };
