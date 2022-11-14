@@ -13,6 +13,11 @@
        
 }
 
+#map {
+    height: 40vh;
+     width: 100%;
+  }
+
 /* Variable Declaration */
 :root {
     --primary-color: #0e3a67;
@@ -192,4 +197,4 @@ button {
 	padding: 20px 12px 10px 20px;
     color: var(--primary-text);
     display: block;
-  }
+}

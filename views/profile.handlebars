@@ -1,47 +1,78 @@
-<h2>This is your Profile:</h2>
+<h2>This is your profile!</h2>
+<div id="app"></div>
+<div>
+    <button id="upload_widget"
+    class="cloudinary_button">
+        Upload files
+    </button>
+<img  
+      id="uploadedimage" 
+      src="">
+    </img> 
+</div>
+
+<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>  
+
+<script type="text/javascript">  
+var myWidget = cloudinary.createUploadWidget({
+  cloudName: 'dvmwoyepo', 
+  uploadPreset: 'hycbjers'}, (error, result) => { 
+    if (!error && result && result.event === "success") { 
+      console.log('Done! Here is the image info: ', result.info); 
+    }
+  }
+)
+
+document.getElementById("upload_widget").addEventListener("click", function(){
+    myWidget.open();
+  }, false);
+</script>
+<img src="https://www.tjminc.com/wp-content/uploads/2020/01/tj-mccartney-hospital-mass-gen-lunder-building-2.jpg" width="150px" height="150px" alt="hospital" class="center"/>
+<h2>Please add image here</h2>
 <br>
 <hr>
 <div class="Profile">
-  {{#each profile}}
-    <br>
-    <h3>Nurse ID:{{nurse_id}}</h3>
+   <h3>Nurse ID:{{nurse_id}}</h3>
     <h3>Name:</h3>
     {{name}}
+  <h2>Name: {{users.name}}</h2>
+    <br>
+    <h3>Favorite Nurse: {{name}}</h3>
+    <br>
+    <h3>Location:{{street_address}}, {{city}}, {{zip_code}}</h3>
+    <br>
+    <h3>Bio: {{bio}}</h3>
+    <br>
+    <h3>Phone Number:{{phone_number}} </h3>
+    <br>
+    <h3>Email:{{email}}</h3>
+    <br>
+    <h3>Driving:{{is_driving}}</h3>
     <br>
     <br>
-    <h3>Email:</h3>
-    {{email}}
-    <br>
-    <br>
-    <h3>Bio:</h3>
-    {{bio}}
-    <br>
-    <br>
-    <h3>Shift Info:</h3>
-    {{ shift_info }}
-    <br>
-    <br>
-    <h3>Location:</h3>
-    <p>{{street_address}}, {{city}}, {{zip_code}}</p>
-    <br>
-    <br>
-    <h3>Drives:</h3>
-    {{is_driving}}
-    <br>
-    <br>
-    <h3>Car Info:</h3>
-    <p>{{car_make}}, {{car_model}}, {{car_color}}</p>
-    <br>
-    <br>
-    <h3>Hospital ID:</h3>
-    {{HospitalId}}
+    <h3>Hospital Name:</h3>
+    {{#each hospital}}
+    <p>{{hospital_name}}</p>
+    {{/each}}
     <br>
     <br>
     <h3>Shift:</h3>
+    {{log work_shift}}
+     {{#each Shifts}}
+    <p>{{work_shift}}</p>
+    {{/each}}
     {{ShiftId}}
-    <br>
-    <hr>
-  {{/each}}
+    {{log hospitals}}
+    {{log shift}}
   <br>
   <br>
+  <button class="delete-profile"user-id={{id}}>Remove Profile</button>
+  <script src="/js/profile.js"></script>
+  <script src="https://widget.cloudinary.com/v2.0/global/all.js"
+type="text/javascript"></script>
+<script 
+     src="upload_widget.js" 
+     type="text/javascript">
+    </script>
+  <script src="/js/cloudinary.js"></script>
 </div>

@@ -1,10 +1,10 @@
-const removeFavBtns = document.querySelectorAll("removeFave");
+const removeProfile = document.querySelectorAll("removeProfile");
 
 
-removeFavBtns.forEach(btn=>{
+removeProfile.forEach(btn=>{
     btn.addEventListener("click",e=>{
         const idToRemove = e.target.getAttribute("user-id");
-        fetch(`/favorites/${idToRemove}`,{
+        fetch(`/profile/${idToRemove}`,{
             method:"DELETE",
         }).then(res=>{
             if(res.ok){
@@ -16,3 +16,4 @@ removeFavBtns.forEach(btn=>{
         })
     })
 })
+

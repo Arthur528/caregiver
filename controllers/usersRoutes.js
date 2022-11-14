@@ -3,6 +3,7 @@ const router =express.Router();
 const {User, Shift, Hospital} = require('../models');
 const bcrypt = require("bcrypt");
 
+
 // A GET route for getting all the users in the database.
 router.get("/", (req,res) =>{
   User.findAll({
@@ -22,19 +23,19 @@ router.post("/signup", (req,res) => {
     email:req.body.email,
     password:req.body.password,
     phone_number:req.body.phone_number,
-    // bio:req.body.bio,
-    // referral:req.body.referral,
-    // is_driving:req.body.is_driving,
-    // shift_info:req.body.shift_info,
-    // street_address:req.body.street_address,
-    // city:req.body.city,
-    // zip_code:req.body.zip_code,
-    // license_plate:req.body.license_plate,
-    // car_make:req.body.car_make,
-    // car_model:req.body.car_model,
-    // car_color:req.body.car_color,
-    // HospitalId:req.body.HospitalId,
-    // ShiftId:req.body.ShiftId,
+    bio:req.body.bio,
+    referral:req.body.referral,
+    is_driving:req.body.is_driving,
+    shift_info:req.body.shift_info,
+    street_address:req.body.street_address,
+    city:req.body.city,
+    zip_code:req.body.zip_code,
+    license_plate:req.body.license_plate,
+    car_make:req.body.car_make,
+    car_model:req.body.car_model,
+    car_color:req.body.car_color,
+    HospitalId:req.body.HospitalId,
+    ShiftId:req.body.ShiftId,
   }).then(newUser => {  
     req.session.user_id=newUser.id;
     req.session.logged_in=true;
