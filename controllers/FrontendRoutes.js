@@ -96,6 +96,7 @@ router.get("/hospitals", (req, res) => {
 router.get("/users", (req, res) => {
     // TODO: Do you need to be logged in to view the hospitals?
     User.findAll({
+        include:[Hospital,Shift]
 
     }).then(users => {
         const usersArray = users.map(user => user.toJSON());
@@ -123,15 +124,13 @@ router.get("/favorites", (req, res) => {
         return res.render("login")
     }
     
-    User.findAll({
+    User.findByPk(req.session.user_id, {
         include: ["FavoriteUsers", Hospital]
     }).then(users => {
-        console.log("favorites")
-        const usersArray = users.map(user => user.toJSON());
-
-
+        const userArray = users.toJSON();
+        
         res.render("favorites", {
-            Users: usersArray
+            users: userArray
         });
 
     }).catch(err => {
