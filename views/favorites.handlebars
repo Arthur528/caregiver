@@ -2,14 +2,16 @@
 <br>
 <hr>
 <div class="User-box">
+    {{log Users}}
     {{#each Users}}
     <br>
-    <h3>name: {{name}}</h3>
+    <h3>Name: {{name}}</h3>
 
-     {{#each favorite_user_id}}
-    <br>
-    <h3>Favorite Nurses: {{name}}</h3>
-    <br>
+    {{#each FavoriteUsers}}
+        <br>
+        <h3>Favorite Nurses: {{name}}</h3>
+        <br>
+
     <h3>Location: {{street_address}}, {{city}}, {{zip_code}}</h3>
     <br>
     <h3>Bio: {{bio}}</h3>
@@ -18,6 +20,7 @@
     <br>
     <h3>Email:{{email}}</h3>
     {{/each}}
+   
     <h3>Available Shifts:</h3>
     <br>
     {{#each Shifts}}

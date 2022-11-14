@@ -104,6 +104,7 @@ router.get("/profile", (req, res) => {
 
     }).then(users => {
         const usersArray = users.map(user => user.toJSON());
+        
 
         res.render("", {
             users: usersArray
@@ -121,10 +122,12 @@ router.get("/favorites", (req, res) => {
         return res.render("login")
     }
     
-    User.findAll({
+    User.findOne({
         include: ["FavoriteUsers"]
     }).then(users => {
+        console.log("favorites")
         const usersArray = users.map(user => user.toJSON());
+
 
         res.render("favorites", {
             Users: usersArray
