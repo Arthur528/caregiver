@@ -34,14 +34,15 @@
     <br>
     <br>
     <h3>Hospital Name:</h3>
-    {{log car_make}}
-    {{log Hospital}}
-    {{#each Hospital}}
+    {{#each Hospitals}}
     <p>{{hospital_name}}</p>
     {{/each}}
     <br>
     <br>
     <h3>Shift:</h3>
+     {{#each Shifts}}
+    <p>{{work_shift}}</p>
+    {{/each}}
     {{ShiftId}}
     <br>
     <hr>
