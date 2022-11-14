@@ -1,4 +1,8 @@
 /* Font */
+@tailwind base;
+@tailwind components;
+@tailwind utilities; 
+
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan&display=swap');
 
 /* Reset */
@@ -6,9 +10,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;    
+       
 }
 
 /* Variable Declaration */
