@@ -22,19 +22,19 @@ router.post("/signup", (req,res) => {
     email:req.body.email,
     password:req.body.password,
     phone_number:req.body.phone_number,
-    bio:req.body.bio,
-    referral:req.body.referral,
-    is_driving:req.body.is_driving,
-    shift_info:req.body.shift_info,
-    street_address:req.body.street_address,
-    city:req.body.city,
-    zip_code:req.body.zip_code,
-    license_plate:req.body.license_plate,
-    car_make:req.body.car_make,
-    car_model:req.body.car_model,
-    car_color:req.body.car_color,
-    HospitalId:req.body.HospitalId,
-    ShiftId:req.body.ShiftId,
+    // bio:req.body.bio,
+    // referral:req.body.referral,
+    // is_driving:req.body.is_driving,
+    // shift_info:req.body.shift_info,
+    // street_address:req.body.street_address,
+    // city:req.body.city,
+    // zip_code:req.body.zip_code,
+    // license_plate:req.body.license_plate,
+    // car_make:req.body.car_make,
+    // car_model:req.body.car_model,
+    // car_color:req.body.car_color,
+    // HospitalId:req.body.HospitalId,
+    // ShiftId:req.body.ShiftId,
   }).then(newUser => {  
     req.session.user_id=newUser.id;
     req.session.logged_in=true;
@@ -110,6 +110,28 @@ router.put('/:id', async (req, res) => {
     };
 
     res.status(200).json(userUpdate);
+  } catch (err) {
+    console.log(err);
+  };
+});
+
+router.delete('/favorites', async (req, res) => {
+  if(!req.session.logged_in){
+    return res.status(401).json({msg:"Can't delete your profile if you aren't logged in."})
+  };
+    
+  try {
+    const userDelete = await User.destroy({
+      where: {
+        id:req.params.id
+      }
+    });
+    
+    if (!userDelete) {
+      return res.status(400).json({message: 'User not found.'})
+    };
+  
+    res.status(200).json(userDelete);
   } catch (err) {
     console.log(err);
   };

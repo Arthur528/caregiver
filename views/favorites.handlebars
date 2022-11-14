@@ -1,0 +1,31 @@
+<h2>Favorite</h2>
+<br>
+<hr>
+<div class="User-box">
+  <h2>Name: {{users.name}}</h2>
+  {{#each FavoriteUsers}}
+    <br>
+    <h3>Favorite Nurse: {{name}}</h3>
+    <br>
+    <h3>Location: {{street_address}}, {{city}}, {{zip_code}}</h3>
+    <br>
+    <h3>Bio: {{bio}}</h3>
+    <br>
+    <h3>Phone Number:{{phone_number}} </h3>
+    <br>
+    <h3>Email:{{email}}</h3>
+    <br>
+    <h3>Driving:{{is_driving}}</h3>
+    <button class="removeFav"user-id={{id}}>Remove</button>
+    {{!-- {{#each Hospitals}}
+      <br>
+      <h2>Hospital name: {{hospital_name}}</h2>
+      <br>
+      <hr>
+    {{/each}} --}}
+  {{/each}}
+  <br>
+  <br>
+  <script src="../public/js/profile.js"></script>
+</div>
+    
