@@ -26,6 +26,7 @@ router.get('/contact-nurse', (req, res) => {
     res.render("contact")
 });
 
+
 router.get('/profile', (req,res) => {
     if(!req.session.logged_in) {
         return res.redirect("/login");

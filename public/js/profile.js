@@ -6,7 +6,6 @@ const deleteProfileButton   = document.getElementById('delete-profile');
 
 // changePictureButton.addEventListener("click", e => {
 
-
 // });
 
 deleteHospitalButtons.forEach(button => {
