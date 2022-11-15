@@ -1,36 +1,62 @@
-<h2>These are the Hospitals:</h2>
-<br>
-<hr>
-<div class="hospital-box">
-  {{#each hospitals}}
-    <br>
-    <h3>Hospital Name: {{hospital_name}}</h3>
-    <br>
-    <p>Location: {{street_address}}, {{city}}, {{zip_code}}</p>
-    <br>
-
-    {{#if ../logged_in}}
-      <h3>Meet our nurses:</h3>
-      <br>
-      {{#each Users}}
-        <h4>Hi! My name is: {{name}}</h4>
+<div class="main-box">
+  <h2>These are the Hospitals:</h2>
+  <br>
+  <hr>
+  {{#if logged_in}}
+    {{#each hospitals}}
+      <div class="hospital-box">
+        <img src="http://placekitten.com/350/350" alt="A picture of a hospital">
         <br>
-        <h5>A little bit about me: </h5>
+        <div class="hospital-box-grid-expanded">
+          <div class="box">
+            <h3>Hospital Name: {{hospital_name}}</h3>
+            <br>
+            <p>Location: {{street_address}}, {{city}}, {{zip_code}}</p>
+            <br>
+            <h3>Meet our nurses:</h3>
+            <br>
+            {{#each Users}}
+              <h4>Hi! My name is: {{name}}</h4>
+              <br>
+              <h5>A little bit about me: </h5>
+              <br>
+              <p>{{bio}}</p>
+              <br>
+            {{/each}}
+          </div>
+          <div class="box">
+            <h3>Available Shifts:</h3>
+            <br>
+            {{#each Shifts}}
+              <p>Shift Info: {{day_of_week}} at {{work_shift}} for {{schedule_duration}} weeks.</p>
+            {{/each}}
+          </div>
+        </div>
         <br>
-        <p>{{bio}}</p>
-        <br>
-      {{/each}}
-      <h3>Available Shifts:</h3>
-      <br>
-      {{#each Shifts}}
-        <p>Shift Info: {{day_of_week}} at {{work_shift}} for {{schedule_duration}} weeks.</p>
-      {{/each}}
-    {{else}}
-      <h4>In order to view nurse and shift information, please log in!</h4>
-    {{/if}}
+      </div>
+      <hr>
+    {{/each}}
     <br>
     <hr>
-  {{/each}}
+  {{else}}
+    {{#each hospitals}}
+      <div class="hospital-box">
+        <img src="http://placekitten.com/350/350" alt="A picture of a hospital">
+        <br>
+        <div class="hospital-box-grid">
+          <div class="box">
+            <h3>Hospital Name: {{hospital_name}}</h3>
+            <br>
+            <p>Location: {{street_address}}, {{city}}, {{zip_code}}</p>
+            <br>
+          </div>
+          <h4>In order to view nurse and shift information, please log in!</h4>
+        </div>
+        <br>
+      </div>
+      <hr>
+    {{/each}}
+  {{/if}}
   <br>
   <br>
   <hr>

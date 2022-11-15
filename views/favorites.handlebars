@@ -1,11 +1,14 @@
-<h2>Favorite</h2>
-<br>
-<hr>
-<div class="User-box">
-  <h2>Name: {{users.name}}</h2>
-  {{#each FavoriteUsers}}
+<div class="main-box box">
+  <h2>Favorite Nurses</h2>
+  <br>
+  <hr>
+  <div class="User-box">
+  <h2>Here are your favorite nurses, {{user.name}}!</h2>
+  {{#each user.FavoriteUser}}
     <br>
     <h3>Favorite Nurse: {{name}}</h3>
+    <br>
+    <img src="http://placekitten.com/300/300" alt="A profile picture"> 
     <br>
     <h3>Location: {{street_address}}, {{city}}, {{zip_code}}</h3>
     <br>
@@ -16,16 +19,11 @@
     <h3>Email:{{email}}</h3>
     <br>
     <h3>Driving:{{is_driving}}</h3>
-    <button class="removeFav"user-id={{id}}>Remove</button>
-    {{!-- {{#each Hospitals}}
-      <br>
-      <h2>Hospital name: {{hospital_name}}</h2>
-      <br>
-      <hr>
-    {{/each}} --}}
+    <button class="main-btn" user-id={{id}}>Remove</button>
   {{/each}}
   <br>
   <br>
-  <script src="../public/js/profile.js"></script>
+</div>
+<script src="../public/js/profile.js"></script>
 </div>
     

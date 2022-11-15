@@ -9,7 +9,6 @@ router.get("/", (req,res) =>{
   }).then(users=>{
     res.json(users);
   }).catch(err=> {
-    console.log(err);
     res.status(500).json({msg: "Can't find the users."});
   });
 });
@@ -40,7 +39,6 @@ router.post("/signup", (req,res) => {
     req.session.logged_in=true;
     res.json(newUser);
   }).catch(err => {
-    console.log(err);
     res.status(500).json({msg: "Unable to create an account."});
   });
 });
@@ -68,7 +66,6 @@ router.post('/login', (req, res) => {
       res.json(foundUser);
     };
   }).catch(err => {
-    console.log(err);
     res.status(500).json({msg: "Can't login to profile."});
   });
 });
@@ -111,7 +108,7 @@ router.put('/:id', async (req, res) => {
 
     res.status(200).json(userUpdate);
   } catch (err) {
-    console.log(err);
+    res.status(500).json({msg: "Can't update user information."});
   };
 });
 
@@ -135,11 +132,12 @@ router.delete('/favorites', async (req, res) => {
     res.status(200).json(userDelete);
   } catch (err) {
     console.log(err);
+    res.status(500).json({msg: "Can't delete favorites."});
   };
 });
 
 // TODO: A DELETE route for a hospital from a user's hospital table. -- Remove Hospital Button on /profile
-router.delete('hospital/delete/:hospital_id', async (req, res) => {
+router.delete('/hospital/delete/:hospital_id', async (req, res) => {
   if(!req.session.logged_in){
     return res.status(401).json({msg:"Can't delete a hospital from your profile if you aren't logged in."});
   };
@@ -159,9 +157,62 @@ router.delete('hospital/delete/:hospital_id', async (req, res) => {
 });
 
 // TODO: A DELETE route for a shift from a user's shift table. -- Remove Shift Button on /profile
+router.delete('/shifts/delete/:shift_id', async (req, res) => {
+  if(!req.session.logged_in){
+    return res.status(401).json({msg:"Can't delete a shift from your profile if you aren't logged in."});
+  };
+    
+  try {
+    User.findByPk(req.session.user_id)
+    .then(loggedinUser => {
+      loggedinUser.removeShifts(req.params.shift_id)
+      .then(user => {
+        console.log(user);
+        res.send('Shift removed!');
+      });
+    });
+  } catch (err) {
+    console.log(err);
+  };
+});
 
 // TODO: A DELETE route for a old favorite nurse (remove a nurse to user's favorites) -- Remove Favorite Button on /favorites -- ALSO NEED THE BUTTON ADDED
+router.delete('/favorites/delete/:favorites_id', async (req, res) => {
+  if(!req.session.logged_in){
+    return res.status(401).json({msg:"Can't remove favorites from your profile if you aren't logged in."});
+  };
+    
+  try {
+    User.findByPk(req.session.user_id)
+    .then(loggedinUser => {
+      loggedinUser.removeFavoriteUsers(req.params.favorites_id)
+      .then(user => {
+        console.log(user);
+        res.send('favorite removed!');
+      });
+    });
+  } catch (err) {
+    console.log(err);
+  };
+});
 
 // TODO: A PUT route for a new favorite nurse (add a nurse to user's favorites) -- Add to Favorites on /users -- ALSO NEED THE BUTTON ADDED
-
+router.put('/favorites/add/:favorites_id', async (req, res) => {
+  if(!req.session.logged_in){
+    return res.status(401).json({msg:"Can't remove favorites from your profile if you aren't logged in."});
+  };
+    
+  try {
+    User.findByPk(req.session.user_id)
+    .then(loggedinUser => {
+      loggedinUser.addFavoriteUsers(req.params.favorites_id)
+      .then(user => {
+        console.log(user);
+        res.send('favorite added!');
+      });
+    });
+  } catch (err) {
+    console.log(err);
+  };
+});
 module.exports = router;

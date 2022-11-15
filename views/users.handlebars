@@ -1,55 +1,64 @@
-<h2>These are the Users:</h2>
-<br>
-<hr>
-<div class="User">
+<div class="main-box">
+  <h2>These are the Users:</h2>
+  <br>
+  <hr>
   {{#each users}}
-    <br>
-    <h3>Nurse ID:{{nurse_id}}</h3>
-    <h3>Name:</h3>
-    {{name}}
-    <br>
-    <br>
-    <h3>Email:</h3>
-    {{email}}
-    <br>
-    <br>
-    <h3>Bio:</h3>
-    {{bio}}
-    <br>
-    <br>
-    <h3>Shift Info:</h3>
-    {{ shift_info }}
-    <br>
-    <br>
-    <h3>Location:</h3>
-    <p>{{street_address}}, {{city}}, {{zip_code}}</p>
-    <br>
-    <br>
-    <h3>Drives:</h3>
-    {{is_driving}}
-    <br>
-    <br>
-    <h3>Car Info:</h3>
-    <p>{{car_make}}, {{car_model}}, {{car_color}}</p>
-    <br>
-    <br>
-    {{log Hospitals}}
-    <h3>Hospital Name:</h3>
-    {{#each Hospitals}}
-    <p>{{hospital_name}}</p>
-    {{/each}}
-    
-    <br>
-    <br>
-    <h3>Shift:</h3>
-    {{log work_shift}}
-     {{#each Shifts}}
-    <p>{{work_shift}}</p>
-    {{/each}}
-    {{ShiftId}}
-    <br>
-    <hr>
+    <div class="user-box">
+      <img src="http://placekitten.com/200/200" alt="A picture of a hospital">
+      <br>
+      <div class="info-box">
+        <h3>Nurse ID:{{nurse_id}}</h3>
+        <h3>Name:</h3>
+        {{name}}
+        <br>
+        <br>
+        <h3>Email:</h3>
+        {{email}}
+        <br>
+        <br>
+        <h3>Bio:</h3>
+        {{bio}}
+        <br>
+        <br>
+        <h3>Shift Info:</h3>
+        {{ shift_info }}
+        <br>
+        <br>
+        <h3>Location:</h3>
+        <p>{{street_address}}, {{city}}, {{zip_code}}</p>
+        <br>
+        <br>
+        <h3>Drives:</h3>
+        {{#if is_driving}}
+          <p>Yes!</p>
+        {{else}}
+          <p>No</p>
+        {{/if}}
+      </div>
+      <div class="info-box">
+        <h3>Car Info:</h3>
+        <p>{{car_make}}, {{car_model}}, {{car_color}}</p>
+        <br>
+        <br>
+        {{log Hospitals}}
+        <h3>Hospital Name:</h3>
+        {{#each Hospitals}}
+        <p>{{hospital_name}}</p>
+        {{/each}}
+        
+        <br>
+        <br>
+        <h3>Shift:</h3>
+        {{log work_shift}}
+        {{#each Shifts}}
+        <p>{{work_shift}}</p>
+        {{/each}}
+        {{ShiftId}}
+        <br>
+      </div>
+    </div>
   {{/each}}
   <br>
   <br>
+ <script src="/js/profile.js"></script>
 </div>
