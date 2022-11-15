@@ -282,7 +282,7 @@ button {
 }
 
 /* Front-end Validation */
-input:invalid {
+/* input:invalid {
     border-color: #900;
     background-color: #fdd;
 }
@@ -304,5 +304,5 @@ input:focus:invalid {
 
 .error.active {
     padding: 0;
-}
+} */
 
