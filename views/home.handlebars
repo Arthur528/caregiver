@@ -1,13 +1,28 @@
-<h1 lcass="">Welcome to Caregiver Connection.</h1>
-<p>Caregiver Connection is a way for travel nurses to find rides and make friendships. Our goal is to provide an application which allows verified registared nurses to connect with other verified RNs and easily set up rides to work, depending on the user's hospital assignment and shifts. Furthermore, a favorite list of nurses and an in-app ride scheduling feature allows for easy ridesharing to and from work!</p>
-{{#if logged_in}}
-  <p>BUTTONS HERE FOR FAVORITES, NURSES, HOSPITALS, AND FIND A RIDE</p>
-  <P>NOTE: THE TOP MENU WILL EVENTUALLY BE A DROPDOWN AND SEEM LESS REDUNDANT!</P>
-{{else}}
-<p>In order to user our service, please log in or sign up!</p>
-  <button onclick="location.href='/login'">Login</button>
-  <button onclick="location.href='/signup'">Sign-up</button>
-{{/if}}
-<div class="home-images-box">
-  <img src="https://www.tjminc.com/wp-content/uploads/2020/01/tj-mccartney-hospital-mass-gen-lunder-building-2.jpg" width="500px" height="400px" alt="hospital" class="center"/>
+{{log this}}
+<div class="home-div">
+  <h1 class="welcome-banner">Welcome to Caregiver Connection.</h1>
+  <div class="home-contents">
+    <div class="home-images-box">
+      <img src="https://www.tjminc.com/wp-content/uploads/2020/01/tj-mccartney-hospital-mass-gen-lunder-building-2.jpg" width="500px" height="400px" alt="hospital" class="center"/>
+    </div>
+    <div class="info-box">
+      <p class="welcome-text">Caregiver Connection is a way for travel nurses to find rides and make friendships. Our goal is to provide an application which allows verified registared nurses to connect with other verified RNs and easily set up rides to work, depending on the user's hospital assignment and shifts. Furthermore, a favorite list of nurses and an in-app ride scheduling feature allows for easy ridesharing to and from work!</p>
+      {{#if logged_in}}
+        <div class="btns-box">
+          <button class="main-btn" onclick="location.href='/profile'">My Profile</button>
+          <button class="main-btn" onclick="location.href='/nurses'">Nurses</button>
+          <button class="main-btn" onclick="location.href='/nurses'">Hospitals</button>
+          <button class="main-btn" onclick="location.href='/nurses'">Find A Ride</button>
+        </div>
+      {{else}}
+        <div class="box">
+          <p class="logged-out-text">In order to user our service, please log in or sign up!</p>
+          <div class="btns-box">
+            <button class="main-btn" onclick="location.href='/login'">Login</button>
+            <button class="main-btn" onclick="location.href='/signup'">Sign-up</button>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
 </div>
