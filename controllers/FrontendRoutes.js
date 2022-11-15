@@ -12,6 +12,64 @@ router.get('/', (req, res) => {
     res.render("home", hbsSession);
 });
 
+// Profile page - if a user is logged in, they are able to view their profile page.
+
+router.get('/find-ride', (req, res) => {
+    console.log(req.session.logged_in);
+    console.log(req.session.user_id);
+    res.render("find-ride")
+});
+
+router.get('/contact-nurse', (req, res) => {
+    console.log(req.session.logged_in);
+    console.log(req.session.user_id);
+    res.render("contact")
+});
+
+
+router.get('/profile', (req,res) => {
+    if(!req.session.logged_in) {
+        return res.redirect("/login");
+    };
+
+    User.findByPk(req.session.user_id, {
+    }).then(foundUser=> {
+        if(!foundUser){
+            return res.redirect("/404")
+        }
+        const hbsUser = foundUser.toJSON();
+        hbsUser.logged_in=true;
+
+        res.render("profile", hbsUser);
+    })
+});
+
+//User page - if a user is logged in, they are able to view other profile pages. 
+router.get('/user/:id', (req,res) => {
+    if(!req.session.logged_in) {
+        return res.redirect("/login");
+    };
+
+    User.findByPk(req.params.id, {
+    }).then(foundUser=> {
+        if(!foundUser){
+            return res.redirect("/404")
+        }
+
+        const hbsUser = foundUser.toJSON();
+        hbsUser.logged_in=true;
+        hbsUser.user_id=req.session.user_id;
+        // console.log(hbsUser)
+        // res.json(hbsUser)
+
+        res.render("profile", hbsUser);
+    })
+});
+
+// TODO: Edit profile page - if the user is logged in, they are able to edit their profile page.
+
+// TODO: View all nurses page - if the user is logged in, they are able to view all the other nurses (users).
+
 // Login route - if the user is not logged in, they are able to view the login page and login.
 router.get('/login', (req,res) => {
     if(req.session.logged_in){

@@ -1,6 +1,14 @@
 const signupForm = document.querySelector("#signupForm");
 const isDriving = document.querySelector("#signupIsDriving");
 const drivingForm = document.querySelector(".driving-box");
+const email = document.getElementById("signupEmail")
+const emailError = document.querySelector("#signupEmail + span.error")
+const password = document.getElementById("signupPassword")
+const passwordError = document.querySelector("signupPassword")
+const nurseId = document.getElementById("signupNurseId")
+const nurseIdError = document.querySelector("#signupNurseId + span.error")
+const userName =document.getElementById("signupName")
+const userNameError=dcoument.querySelector("#signupName + span.error")
 
 signupForm.addEventListener("submit", async e => {
     e.preventDefault();
@@ -74,20 +82,83 @@ function showCarForm() {
     };
 };
 
-async function checkRegisteredNurseStatus(RNvalue) {
-    const nursesAPIURL = 'https://data.wa.gov/resource/688k-siuy.json?credentialnumber=' + RNvalue;
+email.addEventListener("input", (event) => {
+    if (email.validity.valid) {
+        emailError.textContent = "";
+        emailError.className = "error";
+    } else {
+        mailError();
+    }
+});
 
-    fetch(nursesAPIURL)
-    .then((response) => response.json())
-    .then((data) => {
-        console.log(data);
-        console.log(data.length);
-        if(data.length == 0) {
-            console.log("FALSE!");
-            return false;
-        } else {
-            console.log("TRUE!");
-            return true;
-        };
-    });
-};
+function mailError() {
+    if (email.validity.valueMissing) {
+      emailError.textContent = "You need to enter an e-mail address.";
+    } else if (email.validity.typeMismatch) {
+    
+      emailError.textContent = "Entered value needs to be an e-mail address.";
+    } else if (email.validity.tooShort) {
+   
+      emailError.textContent = `Email should be at least ${email.minLength} characters; you entered ${email.value.length}.`;
+    }
+  
+  
+    emailError.className = "error active";
+}
+
+
+
+
+// userName.addEventListener("input", (event) => {
+//     if (nurseId.validity.valid) {
+//         nurseIdError.textContent = "";
+//         nurseId.className = "error";
+//     } else {
+//         nurseError();
+//     }
+// });
+
+
+
+
+
+ 
+
+
+//   function pwordError() {
+//     if (password.validity.valueMissing) {
+//       passwordError.textContent = "Please enter a password";
+//     } else if (password.validity.tooShort) {
+      
+//       passwordError.textContent = `Password should be at least ${password.minLength} characters; you entered ${password.value.length}.`;
+//     }
+
+//     passwordError.className = "error active";
+//   }
+
+
+
+
+// function nurseError() {
+//     if (nurseId.validity.valueMissing) {
+//       nurseIdError.textContent = "Please enter a password";
+//     } else if (nurseId.validity.tooShort) {
+      
+//       nurseIdError.textContent = `Nurse Id  should be at least ${nurseId.minLength} characters and start with RN; you entered ${nurseId.value.length}.`;
+//     }
+
+//     nurseIdError.className = "error active";
+//   }
+
+
+
+// function userError() {
+//     if (userName.validity.valueMissing) {
+//       userNameError.textContent = "Please your First and Last name ";
+
+//     userNameError.className = "error active";
+//   }
+// };
+
+
+
