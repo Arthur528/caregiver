@@ -4,6 +4,7 @@ const drivingForm = document.querySelector(".driving-box");
 const email = document.getElementById("signupEmail")
 const emailError = document.querySelector("#signupEmail + span.error")
 const password = document.getElementById("signupPassword")
+const passwordError = document.querySelector("signupPassword")
 const nurseId = document.getElementById("signupNurseId")
 const nurseIdError = document.querySelector("#signupNurseId + span.error")
 // const userName =document.getElementById("signupName")
@@ -87,16 +88,7 @@ email.addEventListener("input", (event) => {
     } else {
         mailError();
     }
-});
-
-// password.addEventListener("input", (event) => {
-//     if (password.validity.valid) {
-//       passwordError.textContent = "";
-//       password.className = "error";
-//     } else {
-//       pwordError();
-//     }
-// });
+})
 
 function mailError() {
     if (email.validity.valueMissing) {
@@ -113,57 +105,59 @@ function mailError() {
     emailError.className = "error active";
 };
 
+
+
+
+userName.addEventListener("input", (event) => {
+    if (nurseId.validity.valid) {
+        nurseIdError.textContent = "";
+        nurseId.className = "error";
+    } else {
+        nurseError();
+    }
+});
+
+
+
+
+
  
 
 
-//   function pwordError() {
-//     if (password.validity.valueMissing) {
-//       passwordError.textContent = "Please enter a password";
-//     } else if (password.validity.tooShort) {
+  function pwordError() {
+    if (password.validity.valueMissing) {
+      passwordError.textContent = "Please enter a password";
+    } else if (password.validity.tooShort) {
       
-//       passwordError.textContent = `Password should be at least ${password.minLength} characters; you entered ${password.value.length}.`;
-//     }
+      passwordError.textContent = `Password should be at least ${password.minLength} characters; you entered ${password.value.length}.`;
+    }
 
-//     passwordError.className = "error active";
-//   }
-
-//   nurseId.addEventListener("input", (event) => {
-//     if (nurseId.validity.valid) {
-//         nurseIdError.textContent = "";
-//         nurseId.className = "error";
-//     } else {
-//         nurseError();
-//     }
-// });
+    passwordError.className = "error active";
+  }
 
 
-// function nurseError() {
-//     if (nurseId.validity.valueMissing) {
-//       nurseIdError.textContent = "Please enter a password";
-//     } else if (nurseId.validity.tooShort) {
+
+
+function nurseError() {
+    if (nurseId.validity.valueMissing) {
+      nurseIdError.textContent = "Please enter a password";
+    } else if (nurseId.validity.tooShort) {
       
-//       nurseIdError.textContent = `Nurse Id  should be at least ${nurseId.minLength} characters and start with RN; you entered ${nurseId.value.length}.`;
-//     }
+      nurseIdError.textContent = `Nurse Id  should be at least ${nurseId.minLength} characters and start with RN; you entered ${nurseId.value.length}.`;
+    }
 
-//     nurseIdError.className = "error active";
-//   }
+    nurseIdError.className = "error active";
+  }
 
-//   userName.addEventListener("input", (event) => {
-//     if (userName.validity.valid) {
-//         userNameError.textContent = "";
-//         userNameError.className = "error";
-//     } else {
-//         userError();
-//     }
-// });
 
-// function userError() {
-//     if (userName.validity.valueMissing) {
-//       userNameError.textContent = "Please your First and Last name ";
 
-//     userNameError.className = "error active";
-//   }
-// };
+function userError() {
+    if (userName.validity.valueMissing) {
+      userNameError.textContent = "Please your First and Last name ";
+
+    userNameError.className = "error active";
+  }
+};
 
 
 
