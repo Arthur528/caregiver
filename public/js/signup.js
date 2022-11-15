@@ -108,14 +108,14 @@ function mailError() {
 
 
 
-userName.addEventListener("input", (event) => {
-    if (nurseId.validity.valid) {
-        nurseIdError.textContent = "";
-        nurseId.className = "error";
-    } else {
-        nurseError();
-    }
-});
+// userName.addEventListener("input", (event) => {
+//     if (nurseId.validity.valid) {
+//         nurseIdError.textContent = "";
+//         nurseId.className = "error";
+//     } else {
+//         nurseError();
+//     }
+// });
 
 
 
@@ -124,40 +124,40 @@ userName.addEventListener("input", (event) => {
  
 
 
-  function pwordError() {
-    if (password.validity.valueMissing) {
-      passwordError.textContent = "Please enter a password";
-    } else if (password.validity.tooShort) {
+//   function pwordError() {
+//     if (password.validity.valueMissing) {
+//       passwordError.textContent = "Please enter a password";
+//     } else if (password.validity.tooShort) {
       
-      passwordError.textContent = `Password should be at least ${password.minLength} characters; you entered ${password.value.length}.`;
-    }
+//       passwordError.textContent = `Password should be at least ${password.minLength} characters; you entered ${password.value.length}.`;
+//     }
 
-    passwordError.className = "error active";
-  }
-
-
+//     passwordError.className = "error active";
+//   }
 
 
-function nurseError() {
-    if (nurseId.validity.valueMissing) {
-      nurseIdError.textContent = "Please enter a password";
-    } else if (nurseId.validity.tooShort) {
+
+
+// function nurseError() {
+//     if (nurseId.validity.valueMissing) {
+//       nurseIdError.textContent = "Please enter a password";
+//     } else if (nurseId.validity.tooShort) {
       
-      nurseIdError.textContent = `Nurse Id  should be at least ${nurseId.minLength} characters and start with RN; you entered ${nurseId.value.length}.`;
-    }
+//       nurseIdError.textContent = `Nurse Id  should be at least ${nurseId.minLength} characters and start with RN; you entered ${nurseId.value.length}.`;
+//     }
 
-    nurseIdError.className = "error active";
-  }
+//     nurseIdError.className = "error active";
+//   }
 
 
 
-function userError() {
-    if (userName.validity.valueMissing) {
-      userNameError.textContent = "Please your First and Last name ";
+// function userError() {
+//     if (userName.validity.valueMissing) {
+//       userNameError.textContent = "Please your First and Last name ";
 
-    userNameError.className = "error active";
-  }
-};
+//     userNameError.className = "error active";
+//   }
+// };
 
 
 
