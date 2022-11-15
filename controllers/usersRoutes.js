@@ -9,7 +9,6 @@ router.get("/", (req,res) =>{
   }).then(users=>{
     res.json(users);
   }).catch(err=> {
-    console.log(err);
     res.status(500).json({msg: "Can't find the users."});
   });
 });
@@ -40,7 +39,6 @@ router.post("/signup", (req,res) => {
     req.session.logged_in=true;
     res.json(newUser);
   }).catch(err => {
-    console.log(err);
     res.status(500).json({msg: "Unable to create an account."});
   });
 });
@@ -68,7 +66,6 @@ router.post('/login', (req, res) => {
       res.json(foundUser);
     };
   }).catch(err => {
-    console.log(err);
     res.status(500).json({msg: "Can't login to profile."});
   });
 });
@@ -111,7 +108,7 @@ router.put('/:id', async (req, res) => {
 
     res.status(200).json(userUpdate);
   } catch (err) {
-    console.log(err);
+    res.status(500).json({msg: "Can't update user information."});
   };
 });
 
@@ -135,6 +132,7 @@ router.delete('/favorites', async (req, res) => {
     res.status(200).json(userDelete);
   } catch (err) {
     console.log(err);
+    res.status(500).json({msg: "Can't delete favorites."});
   };
 });
 
