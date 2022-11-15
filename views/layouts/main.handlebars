@@ -5,12 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caregiver Connection</title>
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    <link href="/dist/output.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    {{log this}}
     <!-- Header -->
     <header>  
         <!-- Nav Bar -->
@@ -24,13 +21,18 @@
             <div class="app-nav-box">
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="/profile">My Profile</a></li>
-                    <li><a href="/users">Fellow Nurses</a></li>
-                    <li><a href="/favorites">Favorites</a></li>
-                    <li><a href="/hospitals">Hospitals</a></li>
-                    <li><a href="/find-ride">Find a Ride</a></li>
-                    <li><a href="/contact-nurse">Contact Nurse</a></li>
-                    
+                    {{#if logged_in}}
+                        <li><a href="/profile">My Profile</a></li>
+                        <li><a href="/users">Fellow Nurses</a></li>
+                        <li><a href="/favorites">Favorites</a></li>
+                        <li><a href="/find-ride">Find a Ride</a></li>
+                        <!-- TODO: The link below will be deleted from the navabar and appear in the user profile page. -->
+                        <li><a href="/contact-nurse">Contact Nurse</a></li>
+                    {{else}}
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/signup">Sign-up</a></li>
+                    {{/if}}
+                        <li><a href="/hospitals">Hospitals</a></li>
                     {{#if logged_in}}
                         <li><a href="/api/users/logout">Logout</a></li>
                     {{/if}}
