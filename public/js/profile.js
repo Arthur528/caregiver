@@ -27,7 +27,6 @@ const addFavoritesButtion = document.querySelectorAll('.add-id');
 
 // });
 
-
 deleteProfileButton.addEventListener("click" , e=>{
     const idToRemove = e.target.getAttribute("data-id");
     fetch(`/api/users/${idToRemove}`,{

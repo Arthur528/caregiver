@@ -13,6 +13,11 @@
     margin-left: 1%;
 }
 
+#map {
+    height: 40vh;
+     width: 100%;
+  }
+
 #uploadedimage {
     height: 200px;
     width: 200px;
