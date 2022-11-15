@@ -3,8 +3,7 @@ const router =express.Router();
 const {User, Shift, Hospital} = require('../models');
 const bcrypt = require("bcrypt");
 
-
-// A GET route for getting all the users in the database.
+// A GET route for getting all the users in the database. TODO: DELETE?
 router.get("/", (req,res) =>{
   User.findAll({
   }).then(users=>{
@@ -74,7 +73,7 @@ router.post('/login', (req, res) => {
   });
 });
 
-// A DELETE route for removing a user from the database. TODO: Needs to logout the user when deleted.
+// A DELETE route for removing a user from the database. TODO: Needs to logout the user when deleted. -- Delete Profile Button on /profile -- Needs to log out user and reroute to home page.
 router.delete('/:id', async (req, res) => {
   if(!req.session.logged_in){
     return res.status(401).json({msg:"Can't delete your profile if you aren't logged in."})
@@ -139,27 +138,30 @@ router.delete('/favorites', async (req, res) => {
   };
 });
 
-// A DELETE route for a hospital from a user's hospital table.
-router.delete('/:id', async (req, res) => {
+// TODO: A DELETE route for a hospital from a user's hospital table. -- Remove Hospital Button on /profile
+router.delete('hospital/delete/:hospital_id', async (req, res) => {
   if(!req.session.logged_in){
     return res.status(401).json({msg:"Can't delete a hospital from your profile if you aren't logged in."});
   };
     
   try {
-    const hospitalDelete = await Hospital.destroy({
-      where: {
-        id: req.params.id
-      }
+    User.findByPk(req.session.user_id)
+    .then(loggedinUser => {
+      loggedinUser.removeHospital(req.params.hospital_id)
+      .then(user => {
+        console.log(user);
+        res.send('Hospital removed!');
+      });
     });
-    
-    if (!hospitalDelete) {
-      return res.status(400).json({message: 'Hospital not found.'})
-    };
-  
-    res.status(200).json(userDelete);
   } catch (err) {
     console.log(err);
   };
 });
+
+// TODO: A DELETE route for a shift from a user's shift table. -- Remove Shift Button on /profile
+
+// TODO: A DELETE route for a old favorite nurse (remove a nurse to user's favorites) -- Remove Favorite Button on /favorites -- ALSO NEED THE BUTTON ADDED
+
+// TODO: A PUT route for a new favorite nurse (add a nurse to user's favorites) -- Add to Favorites on /users -- ALSO NEED THE BUTTON ADDED
 
 module.exports = router;

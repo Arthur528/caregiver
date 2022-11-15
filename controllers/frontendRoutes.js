@@ -14,8 +14,6 @@ router.get('/', (req, res) => {
 
 // Profile page - if a user is logged in, they are able to view their profile page.
 
-// Profile page - if a user is logged in, they are able to view their profile page.
-
 router.get('/find-ride', (req, res) => {
     console.log(req.session.logged_in);
     console.log(req.session.user_id);
@@ -71,7 +69,6 @@ router.get('/user/:id', (req,res) => {
 // TODO: Edit profile page - if the user is logged in, they are able to edit their profile page.
 
 // TODO: View all nurses page - if the user is logged in, they are able to view all the other nurses (users).
-
 
 // Login route - if the user is not logged in, they are able to view the login page and login.
 router.get('/login', (req,res) => {
