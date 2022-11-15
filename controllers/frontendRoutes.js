@@ -179,7 +179,7 @@ router.get("/favorites", (req, res) => {
     };
     
     User.findByPk(req.session.user_id, {
-        include: ["FavoriteUsers", Hospital]
+        include: ["FavoriteUsers"]
     }).then(users => {
         const userArray = users.toJSON();
 
