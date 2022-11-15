@@ -12,7 +12,6 @@ router.get('/', (req, res) => {
     res.render("home", hbsSession);
 });
 
-<<<<<<< HEAD
 // Profile page - if a user is logged in, they are able to view their profile page.
 
 router.get('/find-ride', (req, res) => {
@@ -70,8 +69,6 @@ router.get('/user/:id', (req,res) => {
 
 // TODO: View all nurses page - if the user is logged in, they are able to view all the other nurses (users).
 
-=======
->>>>>>> dev
 // Login route - if the user is not logged in, they are able to view the login page and login.
 router.get('/login', (req,res) => {
     if(req.session.logged_in){
