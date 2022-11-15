@@ -13,6 +13,17 @@
     box-sizing: border-box;
 }
 
+.cloudinary_button {
+    padding: 0%;
+    margin-left: 1%;
+}
+
+#uploadedimage {
+    height: 200px;
+    width: 200px;
+    border-radius: 25px;
+}
+
 /* Variable Declaration */
 :root {
     --primary-color: #0e3a67;

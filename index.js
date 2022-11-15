@@ -1,8 +1,9 @@
-require("dotenv").config();
 const express = require('express');
+const bodyParser = require('body-parser')
 const session = require('express-session');
 const routes = require('./controllers');
 const exphbs = require('express-handlebars');
+const fs = require('fs');
 require("dotenv").config();
 
 const sequelize = require('./config/connection');
@@ -26,6 +27,8 @@ const sess = {
 };
 app.use(express.static("public"))
 app.use(express.static('views/images'));
+app.use(bodyParser.urlencoded({ extended: false}))
+app.use(bodyParser.json())
 
 const hbs = exphbs.create({});
 app.engine('handlebars', hbs.engine);
