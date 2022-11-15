@@ -28,8 +28,4 @@ deleteHospitalButtons.forEach(button => {
 
 // deleteProfileButton.addEventListener("click", e => {
 
-<<<<<<< HEAD
 // });
-=======
-// });
->>>>>>> 4559cbc83f5956f1035235544ed6af08d2321f64
