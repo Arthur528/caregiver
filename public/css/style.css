@@ -215,7 +215,8 @@ button {
   /* This is the style of our error messages */
   .error {
     width: 50%;
-    padding: 20;
+    padding: 20px;
+    border: hotpink;
   
     font-size: 80%;
     color: white;

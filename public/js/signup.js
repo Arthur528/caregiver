@@ -7,8 +7,11 @@ const password = document.getElementById("signupPassword")
 const passwordError = document.querySelector("signupPassword")
 const nurseId = document.getElementById("signupNurseId")
 const nurseIdError = document.querySelector("#signupNurseId + span.error")
-// const userName =document.getElementById("signupName")
-// const userNameError=dcoument.querySelector("#signupName + span.error")
+const userName =document.getElementById("signupName")
+const userNameError=dcoument.querySelector("#signupName + span.error")
+
+signupForm.addEventListener("submit", async e => {
+    e.preventDefault();
 
     const RNvalue = document.querySelector("#signupNurseId").value
 
@@ -69,9 +72,7 @@ const nurseIdError = document.querySelector("#signupNurseId + span.error")
     // .then(data=>{
     //     location.href = `/`;
     // });
-
-
-
+});
 
 function showCarForm() {
     if(isDriving.checked == true) {
@@ -88,7 +89,7 @@ email.addEventListener("input", (event) => {
     } else {
         mailError();
     }
-})
+});
 
 function mailError() {
     if (email.validity.valueMissing) {
@@ -103,7 +104,7 @@ function mailError() {
   
   
     emailError.className = "error active";
-};
+}
 
 
 
