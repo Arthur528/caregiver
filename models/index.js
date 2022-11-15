@@ -5,7 +5,7 @@ const User = require('./User.js');
 // User has many to many relationship with users for our "favorites" functionality.
 User.belongsToMany(User, {
     through: "UserUser",
-    as: "FavoriteUsers"
+    as: "FavoriteUser"
 });
 
 // A user can belong to many hospitals (different shifts, in same area, etc.).

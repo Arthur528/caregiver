@@ -1,52 +1,55 @@
-<div class="form">
-  <div class="form-heading">Schedule A Ride</div>
-  <form action="" id="rideForm">
+<div class="main-box">
+  <div class="form">
+    <div class="form-heading">Schedule A Ride</div>
+    <form action="" id="rideForm">
 
-    <label for="pickUp"><span>Pickup location: <span class="required"> *</span></span><input type="text" class="input-field" name="pickUp" id="pickUp" placeholder="123 sesame st."/></label>
+      <label for="pickUp"><span>Pickup location: <span class="required"> *</span></span><input type="text" class="input-field" name="pickUp" id="pickUp" placeholder="123 sesame st."/></label>
 
-    <label for="passengers"><span>Passengers</span><span class="required">*</span><select name="passengers" class="passengers" id="passengers" value="">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-    </select></label>
-<div class="google map div">  
-          <div id="map"></div>
-        </div>
+      <label for="passengers"><span>Passengers</span><span class="required">*</span><select name="passengers" class="passengers" id="passengers" value="">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select></label>
+  <div class="google map div">  
+            <div id="map"></div>
+          </div>
 
-    <label for="dropOff"><span>Drop Off location:<span class="required"> *</span></span><input type="text" class="input-field" name="dropOff" id="dropOff" placeholder="1201 S Miller St, "/></label>
+      <label for="dropOff"><span>Drop Off location:<span class="required"> *</span></span><input type="text" class="input-field" name="dropOff" id="dropOff" placeholder="1201 S Miller St, "/></label>
 
-    <label for="shiftTime"><span>Shift block<span class="required"> *</span></span><input type="text" class="input-field" name="shiftTime" id="shiftTime" placeholder="06:00 - 18:00"/></label>
+      <label for="shiftTime"><span>Shift block<span class="required"> *</span></span><input type="text" class="input-field" name="shiftTime" id="shiftTime" placeholder="06:00 - 18:00"/></label>
 
-    <label for="date"><span>Date for ride:<span class="required">*</span></span><input type="text" class="input-field" name="date" id="date" placeholder="11/15/2022"/></label>
+      <label for="date"><span>Date for ride:<span class="required">*</span></span><input type="text" class="input-field" name="date" id="date" placeholder="11/15/2022"/></label>
 
-    <button class="bookRide">Schedule Ride</button>
-    <button class="cancelRide">Cancel</button>
-    <p><a href="/profile">Back to profile!</a></p>
-    
-  </form>
+      <div class="btns-box">
+        <button class="main-btn">Schedule Ride</button>
+        <button class="main-btn">Cancel</button>
+      </div>
+      
+    </form>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>function initMap() {
+    const myLatLng = { lat: 47.608013, lng: -122.335167};
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 10,
+      center: myLatLng,
+    });
+
+    new google.maps.Marker({
+      position: myLatLng,
+      map,
+      title: "Hello World!",
+    });
+  }
+  </script>
+  <script async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJLf29sQ9sjkmYfwUXNiCguIrvTewC6BU&libraries=geometry,places&callback=initMap">
+
+  </script>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script>function initMap() {
-  const myLatLng = { lat: 47.608013, lng: -122.335167};
-  const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 10,
-    center: myLatLng,
-  });
-
-  new google.maps.Marker({
-    position: myLatLng,
-    map,
-    title: "Hello World!",
-  });
-}
-</script>
-<script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJLf29sQ9sjkmYfwUXNiCguIrvTewC6BU&libraries=geometry,places&callback=initMap">
-
-</script>
 
 <script src="/js/signup.js"></script>
 

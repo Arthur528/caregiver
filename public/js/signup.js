@@ -54,24 +54,15 @@ signupForm.addEventListener("submit", async e => {
             }
         }).then(res=>{
             if(res.ok){
-                alert("success!")
                 location.href = `/`;
-                // TODO: When we go to profile, we will need this instead of the redirect above.
-                // return res.json();
             } else {
                 alert("trumpet sound")
                 location.reload();
-            }
+            };
         });
     } else {
         console.log("NOT A RN----");
     };
-
-
-    // TODO: Right now, redirects to homepage on login. We want it to go to profile.
-    // .then(data=>{
-    //     location.href = `/`;
-    // });
 });
 
 function showCarForm() {

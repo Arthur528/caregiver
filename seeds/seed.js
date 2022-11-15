@@ -6,6 +6,7 @@ const hospitalData = require('./HospitalData.json');
 const shiftData = require('./ShiftData.json');
 
 const seedDatabase = async () => {
+  await sequelize.query("SET FOREIGN_KEY_CHECKS = 0");
   await sequelize.sync({ force: true });
 
   // Seeds user data AND encrypts passwords.
@@ -20,7 +21,7 @@ const seedDatabase = async () => {
   const shift = await Shift.bulkCreate(shiftData);
   
   // Seeds relationships between user and their favorite other users, shifts, and hospitals.
-  await users[0].addFavoriteUsers([2,3]);
+  await users[0].addFavoriteUser(2);
   await users[0].addHospital(1);
   await users[0].addShifts([29, 31, 33]);
 
@@ -28,7 +29,7 @@ const seedDatabase = async () => {
   await users[1].addHospitals([1,2]);
   await users[1].addShifts([29, 31, 33]);
 
-  await users[2].addFavoriteUsers([1,3]);
+  await users[2].addFavoriteUser(1);
   await users[2].addHospital(1);
   await users[2].addShifts([36, 38, 40]);
 
@@ -50,6 +51,7 @@ const seedDatabase = async () => {
   await hospitals[3].addShifts(shiftsIdArray.slice(0, 57));
   await hospitals[4].addShifts(noFlex);
 
+  await sequelize.query("SET FOREIGN_KEY_CHECKS = 1");
   process.exit(0);
 
 };

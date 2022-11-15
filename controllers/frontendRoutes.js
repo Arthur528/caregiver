@@ -12,21 +12,6 @@ router.get('/', (req, res) => {
     res.render("home", hbsSession);
 });
 
-// Profile page - if a user is logged in, they are able to view their profile page.
-
-router.get('/find-ride', (req, res) => {
-    console.log(req.session.logged_in);
-    console.log(req.session.user_id);
-    res.render("find-ride")
-});
-
-router.get('/contact-nurse', (req, res) => {
-    console.log(req.session.logged_in);
-    console.log(req.session.user_id);
-    res.render("contact")
-});
-
-
 router.get('/profile', (req,res) => {
     if(!req.session.logged_in) {
         return res.redirect("/login");
@@ -59,8 +44,6 @@ router.get('/user/:id', (req,res) => {
         const hbsUser = foundUser.toJSON();
         hbsUser.logged_in=true;
         hbsUser.user_id=req.session.user_id;
-        // console.log(hbsUser)
-        // res.json(hbsUser)
 
         res.render("profile", hbsUser);
     })
@@ -133,8 +116,7 @@ router.get("/users", (req, res) => {
         res.render("users", hbsUsers);
 
     }).catch(err => {
-        console.log(err);
-        res.status(500).json({err: "bad move bub"});
+        res.status(500).json({err: "Can't find the users"});
     });
 });
 
@@ -179,12 +161,12 @@ router.get("/favorites", (req, res) => {
     };
     
     User.findByPk(req.session.user_id, {
-        include: ["FavoriteUsers", Hospital]
+        include: ["FavoriteUser", Hospital]
     }).then(users => {
         const userArray = users.toJSON();
 
         const hbsFavorites = {
-            users: userArray,
+            user: userArray,
             logged_in: req.session.logged_in
         };
         
@@ -192,7 +174,7 @@ router.get("/favorites", (req, res) => {
 
     }).catch(err => {
         console.log(err);
-        res.status(500).json({err: "bad move bub"});
+        res.status(500).json({err: "bad move bub!"});
     });
 });
 
@@ -225,8 +207,7 @@ router.get("/hospitals", (req, res) => {
         res.render("hospitals", hbsHospital);
 
     }).catch(err => {
-        console.log(err);
-        res.status(500).json({err: "bad move bub"});
+        res.status(500).json({err: "Can't find the hospitals."});
     });
 });
 
