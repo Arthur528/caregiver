@@ -4,9 +4,10 @@ const deleteShiftButton     = document.getElementById('delete-shift');
 const editProfileButton     = document.getElementById('edit-profile');
 const deleteProfileButton   = document.getElementById('delete-profile');
 
-changePictureButton.addEventListener("click", e => {
+// changePictureButton.addEventListener("click", e => {
 
-});
+
+// });
 
 deleteHospitalButtons.forEach(button => {
     button.addEventListener("click", e => {
@@ -22,10 +23,10 @@ deleteHospitalButtons.forEach(button => {
 //     console.log(idToRemove);
 // });
 
-editProfileButton.addEventListener("click", e => {
+// editProfileButton.addEventListener("click", e => {
 
-});
+// });
 
-deleteProfileButton.addEventListener("click", e => {
+// deleteProfileButton.addEventListener("click", e => {
 
-});
+// });

@@ -1,4 +1,3 @@
-require("dotenv").config();
 const express = require('express');
 const bodyParser = require('body-parser')
 const session = require('express-session');
@@ -46,4 +45,3 @@ app.use(routes);
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
-
